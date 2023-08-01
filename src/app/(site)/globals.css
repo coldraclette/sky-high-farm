@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Typography */
+
+body {
+  @apply text-[15px];
+}
+
+.text-size-1 {
+  @apply md:text-2xl lg:text-4xl;
+}
+
+.text-size-1-bold {
+  @apply text-size-1 font-bold;
+}
+
+.text-caption {
+  @apply text-xs md:text-xl;
+}

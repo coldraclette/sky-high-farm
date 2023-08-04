@@ -108,6 +108,61 @@ export const structure = (S: any) =>
                 ),
             ])
         ),
+      S.listItem()
+        .title('Grids')
+        .child(
+          S.list()
+            .title('Grids')
+            .items([
+              S.listItem()
+                .title('Programming Projects')
+                .child(
+                  S.documentTypeList('programmingProject')
+                    .title('Programming Projects')
+                    .filter('_type == "programmingProject"')
+                ),
+
+              S.listItem()
+                .title('Special Projects')
+                .child(
+                  S.documentTypeList('specialProject')
+                    .title('Special Projects')
+                    .filter('_type == "specialProject"')
+                ),
+
+              S.listItem()
+                .title('Team Members')
+                .child(
+                  S.documentTypeList('teamMember')
+                    .title('Team Members')
+                    .filter('_type == "teamMember"')
+                ),
+
+              S.listItem()
+                .title('Organizations')
+                .child(
+                  S.documentTypeList('organizations')
+                    .title('Organizations')
+                    .filter('_type == "organizations"')
+                ),
+
+              S.listItem()
+                .title('Fellowships')
+                .child(
+                  S.documentTypeList('fellow')
+                    .title('Fellowship')
+                    .filter('_type == "fellow"')
+                ),
+
+              S.listItem()
+                .title('Grants')
+                .child(
+                  S.documentTypeList('grant')
+                    .title('Grants')
+                    .filter('_type == "grant"')
+                ),
+            ])
+        ),
 
       ...S.documentTypeListItems().filter(
         (listItem: any) =>
@@ -123,6 +178,12 @@ export const structure = (S: any) =>
             'grantsPage',
             'foodaccessPage',
             'fellowshipPage',
+            'programmingProject',
+            'specialProject',
+            'teamMember',
+            'organizations',
+            'fellow',
+            'grant',
           ].includes(listItem.getId())
       ),
     ]);

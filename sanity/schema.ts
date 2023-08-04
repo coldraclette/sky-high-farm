@@ -14,6 +14,9 @@ import { supportPage } from './schema/support-page';
 import { teamMember } from './schema/team-member';
 import { teamPage } from './schema/team-page';
 import { volunteerPage } from './schema/volunteer-page';
+import { organizations } from './schema/organizations';
+import { fellow } from './schema/fellow';
+import { grant } from './schema/grant';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -31,5 +34,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     grantsPage,
     foodaccessPage,
     fellowshipPage,
+    organizations,
+    fellow,
+    grant
   ],
 };

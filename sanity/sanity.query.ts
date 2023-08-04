@@ -164,18 +164,49 @@ export async function getVolunteerPageData() {
 
 export async function getGrantsPageData() {
   return client.fetch(groq`*[_type == "grantsPage"][0]{
-    textContent
+    textContent,
+    grantSections[]{
+      sectionTitle,
+      members[]->{
+        name,
+        jobTitle,
+        image,
+        slug { current }
+      }
+    }
   }`);
 }
 
 export async function getFoodAccessPageData() {
   return client.fetch(groq`*[_type == "foodaccessPage"][0]{
-    textContent
+    textContent,
+    organizations[]->{
+      name,
+      slug { current },
+    }
   }`);
 }
 
 export async function getFellowshipPageData() {
   return client.fetch(groq`*[_type == "fellowshipPage"][0]{
-    textContent
+    textContent,
+    fellowSections[]{
+      sectionTitle,
+      members[]->{
+        name,
+        jobTitle,
+        image,
+        slug { current }
+      }
+    }
+  }`);
+}
+
+export async function getSingleOrganizationData(slug: string) {
+  return client.fetch(groq`*[_type == "organizations" && slug.current == "${slug}"][0]{
+    name,
+    orgInfo,
+    image,
+    text,
   }`);
 }

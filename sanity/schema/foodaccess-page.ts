@@ -10,5 +10,17 @@ export const foodaccessPage = {
       type: 'array',
       of: [{ type: 'block' }],
     },
+    {
+      name: 'organizations',
+      title: 'Organizations',
+      description: 'Array of organizations in this section.',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'organizations' }],
+        },
+      ],
+    },
   ],
 };

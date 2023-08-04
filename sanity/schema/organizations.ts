@@ -1,12 +1,12 @@
-export const teamMember = {
-  name: 'teamMember',
-  title: 'Members',
+export const organizations = {
+  name: 'organizations',
+  title: 'Organization',
   type: 'document',
   fields: [
     {
       name: 'name',
       title: 'Name',
-      description: 'The name of the team member.',
+      description: 'The name of the organization.',
       type: 'string',
     },
     {
@@ -25,15 +25,16 @@ export const teamMember = {
       },
     },
     {
-      name: 'jobTitle',
-      title: 'Job Title',
-      description: 'The job title of the team member.',
-      type: 'string',
+      name: 'orgInfo',
+      title: 'orgInfo',
+      description: 'Organization info on the left side.',
+      type: 'array',
+      of: [{ type: 'block' }],
     },
     {
-      name: 'bio',
-      title: 'Biography',
-      description: 'A detailed text block about the team member.',
+      name: 'text',
+      title: 'Text',
+      description: 'A detailed text block about the organization.',
       type: 'array',
       of: [{ type: 'block' }],
     },

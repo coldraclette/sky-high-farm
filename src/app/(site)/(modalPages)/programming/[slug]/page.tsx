@@ -20,7 +20,6 @@ interface Props {
 export default async function Page({ params }: Props) {
   let data;
 
-  console.log(params.slug);
   try {
     data = await getProgrammingProject(params.slug);
   } catch (error) {

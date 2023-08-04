@@ -1,12 +1,12 @@
-export const teamMember = {
-  name: 'teamMember',
-  title: 'Members',
+export const grant = {
+  name: 'grant',
+  title: 'Grant Recipient and Committee',
   type: 'document',
   fields: [
     {
       name: 'name',
       title: 'Name',
-      description: 'The name of the team member.',
+      description: 'The name of the grant recipient or committee.',
       type: 'string',
     },
     {
@@ -27,20 +27,22 @@ export const teamMember = {
     {
       name: 'jobTitle',
       title: 'Job Title',
-      description: 'The job title of the team member.',
+      description:
+        'Additional information about the grant recipient or committee.',
       type: 'string',
     },
     {
       name: 'bio',
       title: 'Biography',
-      description: 'A detailed text block about the team member.',
+      description:
+        'A detailed text block about the grant recipient or committee.',
       type: 'array',
       of: [{ type: 'block' }],
     },
     {
       name: 'image',
       title: 'Image',
-      description: 'The image of the team member.',
+      description: 'The image of the grant recipient or committee.',
       type: 'image',
       fields: [
         {

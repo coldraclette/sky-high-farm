@@ -3,7 +3,6 @@ import TextContent from '../../components/TextContent';
 
 export default async function Page() {
   const data = await getJobPageData();
-  console.log(data);
 
   return (
     <div className="px-5 md:px-6">

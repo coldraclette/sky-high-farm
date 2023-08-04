@@ -16,7 +16,6 @@ interface Props {
 
 export default async function Page({ params }: Props) {
   const data = await getSingleOrganizationData(params.slug);
-console.log("data", data)
   return (
     <div>
       <div className="px-5 pt-4 md:px-6">

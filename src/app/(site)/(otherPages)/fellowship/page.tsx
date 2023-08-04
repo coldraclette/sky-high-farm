@@ -7,7 +7,6 @@ import StaffSection from '../../components/Team/StaffSection';
 
 export default async function Page() {
   const data = await getFellowshipPageData();
-  console.log(data)
   return (
     <div className="px-5 md:px-6">
       <TextContent text={data.textContent} />

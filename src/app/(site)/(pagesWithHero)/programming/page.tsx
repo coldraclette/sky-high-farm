@@ -11,6 +11,8 @@ import ProgrammingProjects from '../../components/Programming/ProgrammingProject
 import SpecialProjects from '../../components/Programming/SpecialProjects';
 import TextContent from '../../components/TextContent';
 
+export const revalidate = 60;
+
 export default async function Page() {
   const data = await getProgrammingPageData();
   const programmingProjects = await getFirstProgrammingProjects();

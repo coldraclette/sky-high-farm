@@ -5,14 +5,14 @@ import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 
 interface StaffMembersProps {
   member: any;
+  type?: string;
 }
 
-export default function StaffMembers({ member }: StaffMembersProps) {
+export default function StaffMembers({ member, type }: StaffMembersProps) {
   if (member.slug) {
     return (
-      <Link href={`/fellowship/${member.slug.current}`}>
+      <Link href={`/${type}/${member.slug.current}`}>
         <div className="relative mt-2 h-[230px] w-full md:mt-0 md:h-[520px]">
-          {/* FIX IMAGES ON DESKTOP */}
           <Image
             src={
               member.image ? urlForImage(member.image) : '/skyhighfarm-logo.png'

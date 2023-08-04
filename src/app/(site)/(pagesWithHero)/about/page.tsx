@@ -1,10 +1,10 @@
-import { PortableText, PortableTextComponents } from '@portabletext/react';
-
 import { getAboutPageData } from '../../../../../sanity/sanity.query';
 import Timeline from '../../components/About/Timeline';
 import HeaderImage from '../../components/HeaderImage';
 import HeaderImageTitleAndAlt from '../../components/HeaderImageTitleAndAlt';
 import TextContent from '../../components/TextContent';
+
+export const revalidate = 60;
 
 export default async function Page() {
   const data = await getAboutPageData();

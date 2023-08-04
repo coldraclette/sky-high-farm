@@ -163,7 +163,8 @@ export async function getVolunteerPageData() {
 }
 
 export async function getGrantsPageData() {
-  return client.fetch(groq`*[_type == "grantsPage"][0]{
+  return client.fetch(
+    groq`*[_type == "grantsPage"][0]{
     textContent,
     grantSections[]{
       sectionTitle,
@@ -174,7 +175,8 @@ export async function getGrantsPageData() {
         slug { current }
       }
     }
-  }`);
+  }`
+  );
 }
 
 export async function getFoodAccessPageData() {
@@ -185,8 +187,7 @@ export async function getFoodAccessPageData() {
       name,
       slug { current },
     }
-  }`,
-    { next: { revalidate: 60 } }
+  }`
   );
 }
 
@@ -207,6 +208,24 @@ export async function getFellowshipPageData() {
 
 export async function getSingleOrganizationData(slug: string) {
   return client.fetch(groq`*[_type == "organizations" && slug.current == "${slug}"][0]{
+    name,
+    orgInfo,
+    image,
+    text,
+  }`);
+}
+
+export async function getSingleGrantsData(slug: string) {
+  return client.fetch(groq`*[_type == "grant" && slug.current == "${slug}"][0]{
+    name,
+    orgInfo,
+    image,
+    text,
+  }`);
+}
+
+export async function getSingleFellowshipData(slug: string) {
+  return client.fetch(groq`*[_type == "fellow" && slug.current == "${slug}"][0]{
     name,
     orgInfo,
     image,

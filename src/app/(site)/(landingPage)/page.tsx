@@ -1,6 +1,8 @@
 import { getLandingPageData } from '../../../../sanity/sanity.query';
 import { VideoPlayer } from '../components/VideoPlayer';
 
+export const revalidate = 60;
+
 export default async function Home() {
   const landingPageData = await getLandingPageData();
   const { backgroundVideo } = landingPageData;

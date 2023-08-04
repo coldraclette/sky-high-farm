@@ -10,7 +10,7 @@ export default async function Page() {
   return (
     <div className="px-5 md:px-6">
       <TextContent text={data.textContent} />
-      <div className="grid justify-center mt-12 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid justify-center gap-6 md:grid-cols-2 lg:grid-cols-3">
         {data.organizations.map((org: any) => {
           return (
             <Link key={org._key} href={`/organizations/${org.slug.current}`}>

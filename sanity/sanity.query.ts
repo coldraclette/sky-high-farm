@@ -178,13 +178,16 @@ export async function getGrantsPageData() {
 }
 
 export async function getFoodAccessPageData() {
-  return client.fetch(groq`*[_type == "foodaccessPage"][0]{
+  return client.fetch(
+    groq`*[_type == "foodaccessPage"][0]{
     textContent,
     organizations[]->{
       name,
       slug { current },
     }
-  }`);
+  }`,
+    { next: { revalidate: 60 } }
+  );
 }
 
 export async function getFellowshipPageData() {

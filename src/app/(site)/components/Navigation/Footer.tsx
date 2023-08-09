@@ -19,7 +19,7 @@ export default function Footer({
   return (
     <footer
       className={`p-4 flex items-end justify-between md:text-xl ${textColor} ${
-        fixed ? 'absolute bottom-0 w-full' : 'relative'
+        fixed ? 'fixed bottom-0 w-full' : 'relative'
       }`}
     >
       <ul className="flex gap-2 md:mb-3 md:gap-8">

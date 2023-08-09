@@ -9,6 +9,17 @@ interface StaffMembersProps {
 }
 
 export default function StaffMembers({ member, type }: StaffMembersProps) {
+  const adjustMobilePosition = (member: any) => {
+    if (!member.image) return;
+    if (member.image.mobilePosition === 'top') {
+      return 'object-top';
+    } else if (member.image.mobilePosition === 'bottom') {
+      return 'object-bottom';
+    } else {
+      return 'object-center';
+    }
+  };
+
   if (member.slug) {
     return (
       <Link href={`/${type}/${member.slug.current}`}>
@@ -26,7 +37,9 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
                 ? urlForImageBlur(member.image)
                 : '/skyhighfarm-logo.png'
             }
-            className="transition-opacity duration-300 hover:opacity-70"
+            className={`transition-opacity duration-300 hover:opacity-70 ${adjustMobilePosition(
+              member
+            )}`}
           />
         </div>
         <p className="mt-4 text-xs md:mt-2 md:text-xl">{member.jobTitle}</p>

@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Menu color="text-white" isLandingPage={true} />
       <Logo />
       {children}
-      <Footer />
+      <Footer textColor="text-white" fixed={true} />
     </div>
   );
 }

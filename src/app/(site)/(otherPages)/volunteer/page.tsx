@@ -8,7 +8,7 @@ export default async function Page() {
 
   return (
     <div className="px-5 md:px-6">
-      <TextContent text={data.textContent} />
+      <TextContent text={data.textContent} greenTitles={true} />
     </div>
   );
 }

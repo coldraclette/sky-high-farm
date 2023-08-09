@@ -24,7 +24,7 @@ export default async function Page({ params }: Props) {
       <div className="px-5 pt-4 md:px-6">
         <BackButton path="/team" />
         <h1 className="text-size-1-bold mt-4 md:mb-10 md:mt-5">{data.name}</h1>
-        <div className="mt-3 grid md:mt-10 md:grid-cols-[1fr_2fr]">
+        <div className="mt-3 grid md:mt-10 lg:grid-cols-[1fr_2fr]">
           <h2 className="text-[15px] md:text-2xl">{data.jobTitle}</h2>
           <TextContent
             text={data.bio}

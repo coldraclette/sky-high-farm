@@ -3,9 +3,12 @@
 @import 'tailwindcss/utilities';
 
 /* Typography */
-
+html {
+  height: 100%;
+  width: 100%;
+}
 body {
-  @apply text-[15px];
+  @apply flex h-full flex-col justify-between bg-white font-sans text-[15px];
 }
 
 .text-size-1 {
@@ -18,4 +21,9 @@ body {
 
 .text-caption {
   @apply text-xs md:text-xl;
+}
+
+.blend-difference {
+  mix-blend-mode: difference;
+  color: white;
 }

@@ -26,7 +26,7 @@ export default function ProgrammingProjects({
       return (
         <button
           onClick={loadMoreProjects}
-          className="text-left text-red md:text-[38px]"
+          className="text-left text-red md:text-[38px] mt-2"
         >
           Load More
         </button>

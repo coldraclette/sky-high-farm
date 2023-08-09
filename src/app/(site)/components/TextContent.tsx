@@ -5,12 +5,14 @@ interface TextContentProps {
   text: any;
   textSize?: string;
   color?: string;
+  greenTitles?: boolean;
 }
 
 export default function TextContent({
   text,
   textSize = 'text-size-1 md:leading-[39.6px] md:tracking-[0.36px]',
   color = '',
+  greenTitles = false,
 }: TextContentProps) {
   const components: PortableTextComponents = {
     block: {
@@ -25,7 +27,7 @@ export default function TextContent({
     list: {
       bullet: ({ children }) => (
         <ul
-          className={`${textSize} ${color} mb-2 list-disc leading-[16.5px] tracking-[0.15px] ml-5 md:ml-7`}
+          className={`${textSize} ${color} mb-2 ml-5 list-disc leading-[16.5px] tracking-[0.15px] md:ml-7`}
         >
           {children}
         </ul>
@@ -57,6 +59,9 @@ export default function TextContent({
           </Link>
         );
       },
+      strong: ({ children }) => (
+        <strong className={`${greenTitles && 'text-green'}`}>{children}</strong>
+      ),
     },
   };
 

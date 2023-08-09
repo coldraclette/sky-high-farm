@@ -44,6 +44,21 @@ export const teamMember = {
       type: 'image',
       fields: [
         {
+          name: 'mobilePosition',
+          type: 'string',
+          description:
+            "This option is for the grid display. On mobile the image can be positioned 'top', 'center', or 'bottom'.",
+          options: {
+            list: [
+              { title: 'Show top', value: 'top' },
+              { title: 'Show center', value: 'center' },
+              { title: 'Show bottom', value: 'bottom' },
+            ],
+            layout: 'radio',
+            direction: 'horizontal',
+          },
+        },
+        {
           name: 'alt',
           type: 'string',
           title: 'Alternative text',

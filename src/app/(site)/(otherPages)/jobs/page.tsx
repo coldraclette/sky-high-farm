@@ -12,7 +12,7 @@ export default async function Page() {
         data.jobOpenings.map((jobOpening: any) => (
           <div
             key={jobOpening._key}
-            className="mb-8 grid gap-4 md:mb-16 md:grid-cols-[1fr_2fr]"
+            className="mb-8 grid gap-4 md:mb-16 lg:grid-cols-[1fr_2fr]"
           >
             <div>
               <h2 className="text-size-1">{jobOpening.title}</h2>

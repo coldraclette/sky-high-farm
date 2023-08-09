@@ -49,11 +49,13 @@ export default function ProgrammingProjectItem({
           }
         />
       </div>
-      {project.flexibleDate ? (
-        <p className="text-xs md:text-xl">{project.flexibleDate}</p>
-      ) : (
-        <p className="text-xs md:text-xl">{formatDateShort(project.date)}</p>
-      )}
+      <div className="mt-2">
+        {project.flexibleDate ? (
+          <p className="text-xs md:text-xl">{project.flexibleDate}</p>
+        ) : (
+          <p className="text-xs md:text-xl">{formatDateShort(project.date)}</p>
+        )}
+      </div>
       <h3 className="text-size-1">{project.title}</h3>
       {project.subtitleGreen && (
         <h4 className="text-size-1 text-green">{project.subtitleGreen}</h4>

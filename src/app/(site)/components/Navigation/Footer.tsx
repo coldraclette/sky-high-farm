@@ -18,10 +18,8 @@ export default function Footer({
   const isMobile = windowSize.width ? windowSize.width < 770 : false; // 1024
   return (
     <footer
-      className={`m-4 md:text-xl ${textColor} ${
-        fixed
-          ? 'absolute bottom-0'
-          : 'flex justify-between items-end'
+      className={`p-4 flex items-end justify-between md:text-xl ${textColor} ${
+        fixed ? 'absolute bottom-0 w-full' : 'relative'
       }`}
     >
       <ul className="flex gap-2 md:mb-3 md:gap-8">

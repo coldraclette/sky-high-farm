@@ -1,9 +1,11 @@
+import { urlForImage } from '../../../../../sanity/lib/image';
 import {
   getFirstProgrammingProjects,
   getFirstSpecialProjects,
   getNumberOfProgrammingProjects,
   getNumberOfSpecialProjects,
   getProgrammingPageData,
+  getProgrammingPageMetaData,
 } from '../../../../../sanity/sanity.query';
 import HeaderImage from '../../components/HeaderImage';
 import HeaderImageTitleAndAlt from '../../components/HeaderImageTitleAndAlt';
@@ -12,6 +14,36 @@ import SpecialProjects from '../../components/Programming/SpecialProjects';
 import TextContent from '../../components/TextContent';
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  const { seoTitle, seoDescription, seoImage } =
+    await getProgrammingPageMetaData();
+
+  return {
+    title: {
+      default: seoTitle,
+    },
+    description: seoDescription,
+    openGraph: {
+      type: 'website',
+      url: 'skyhighfarm.org/programming',
+      title: seoTitle,
+      description: seoDescription,
+      siteName: 'skyhighfarm.org',
+      images: [
+        {
+          url: urlForImage(seoImage),
+          width: 1200,
+          height: 630,
+          alt: '',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export default async function Page() {
   const data = await getProgrammingPageData();

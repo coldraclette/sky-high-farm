@@ -4,7 +4,10 @@ import {
   urlForImage,
   urlForImageBlur,
 } from '../../../../../../sanity/lib/image';
-import { getTeamMemberData } from '../../../../../../sanity/sanity.query';
+import {
+  getTeamMemberData,
+  getTeamMemberMetaData,
+} from '../../../../../../sanity/sanity.query';
 import BackButton from '../../../components/BackButton';
 import TextContent from '../../../components/TextContent';
 
@@ -15,6 +18,37 @@ interface Props {
 }
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: Props) {
+  const { name, seoDescription, image } = await getTeamMemberMetaData(
+    params.slug
+  );
+
+  return {
+    title: {
+      default: `Sky High Farm | ${name}`,
+    },
+    description: seoDescription,
+    openGraph: {
+      type: 'website',
+      url: `skyhighfarm.org/team/${params.slug}`,
+      title: name,
+      description: seoDescription,
+      siteName: 'skyhighfarm.org',
+      images: [
+        {
+          url: image ? urlForImage(image) : '/skyhighfarm-logo.png',
+          width: 1200,
+          height: 630,
+          alt: name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export default async function Page({ params }: Props) {
   const data = await getTeamMemberData(params.slug);

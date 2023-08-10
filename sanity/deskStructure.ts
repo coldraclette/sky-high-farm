@@ -18,7 +18,7 @@ export const structure = (S: any) =>
                 ),
 
               S.listItem()
-                .title('Programming')
+                .title('Programming Page')
                 .child(
                   S.document()
                     .schemaType('programmingPage')

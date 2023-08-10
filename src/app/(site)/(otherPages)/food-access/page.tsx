@@ -2,10 +2,43 @@ import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
-import { getFoodAccessPageData } from '../../../../../sanity/sanity.query';
+import {
+  getFoodAccessPageData,
+  getFoodAccessPageMetaData,
+} from '../../../../../sanity/sanity.query';
 import TextContent from '../../components/TextContent';
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  const { seoTitle, seoDescription, seoImage } =
+    await getFoodAccessPageMetaData();
+
+  return {
+    title: {
+      default: seoTitle,
+    },
+    description: seoDescription,
+    openGraph: {
+      type: 'website',
+      url: 'skyhighfarm.org/food-access',
+      title: seoTitle,
+      description: seoDescription,
+      siteName: 'skyhighfarm.org',
+      images: [
+        {
+          url: urlForImage(seoImage),
+          width: 1200,
+          height: 630,
+          alt: 'sky high farm logo',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export default async function Page() {
   const data = await getFoodAccessPageData();

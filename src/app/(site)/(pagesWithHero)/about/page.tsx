@@ -1,10 +1,43 @@
-import { getAboutPageData } from '../../../../../sanity/sanity.query';
+import { urlForImage } from '../../../../../sanity/lib/image';
+import {
+  getAboutPageData,
+  getAboutPageMetaData,
+} from '../../../../../sanity/sanity.query';
 import Timeline from '../../components/About/Timeline';
 import HeaderImage from '../../components/HeaderImage';
 import HeaderImageTitleAndAlt from '../../components/HeaderImageTitleAndAlt';
 import TextContent from '../../components/TextContent';
 
 export const revalidate = 60;
+
+export async function generateMetadata() {
+  const { seoTitle, seoDescription, seoImage } = await getAboutPageMetaData();
+
+  return {
+    title: {
+      default: seoTitle,
+    },
+    description: seoDescription,
+    openGraph: {
+      type: 'website',
+      url: 'skyhighfarm.org/about',
+      title: seoTitle,
+      description: seoDescription,
+      siteName: 'skyhighfarm.org',
+      images: [
+        {
+          url: urlForImage(seoImage),
+          width: 1200,
+          height: 630,
+          alt: 'sky high farm logo',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export default async function Page() {
   const data = await getAboutPageData();

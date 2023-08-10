@@ -6,6 +6,8 @@ import {
 } from '../../../../../../sanity/lib/image';
 import {
   getProgrammingProject,
+  getSingleProgrammingProjectMetaData,
+  getSingleSpecialProjectMetaData,
   getSpecialProject,
 } from '../../../../../../sanity/sanity.query';
 import BackButton from '../../../components/BackButton';
@@ -18,6 +20,47 @@ interface Props {
 }
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: Props) {
+  let data;
+
+  try {
+    data = await getSingleProgrammingProjectMetaData(params.slug);
+  } catch (error) {}
+
+  if (!data) {
+    try {
+      data = await getSingleSpecialProjectMetaData(params.slug);
+    } catch (error) {}
+  }
+
+  return {
+    title: {
+      default: `Sky High Farm | ${data.title}`,
+    },
+    description: data.seoDescription,
+    openGraph: {
+      type: 'website',
+      url: `skyhighfarm.org/programming/${params.slug}`,
+      title: data.title,
+      description: data.seoDescription,
+      siteName: 'skyhighfarm.org',
+      images: [
+        {
+          url: data.projectImage
+            ? urlForImage(data.projectImage)
+            : '/skyhighfarm-logo.png',
+          width: 1200,
+          height: 630,
+          alt: data.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export default async function Page({ params }: Props) {
   let data;

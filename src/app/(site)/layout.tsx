@@ -1,11 +1,9 @@
+import { urlForImage } from '../../../sanity/lib/image';
+import { getLandingPageMetaData } from '../../../sanity/sanity.query';
+
 import './globals.css';
 
-import { Inter } from 'next/font/google';
 import MonumentGrotesk from 'next/font/local';
-
-import Footer from './components/Navigation/Footer';
-import Logo from './components/Navigation/Logo';
-import Menu from './components/Navigation/Menu';
 
 const monumentGrotesk = MonumentGrotesk({
   variable: '--font-sans',
@@ -26,22 +24,22 @@ const monumentGrotesk = MonumentGrotesk({
 });
 
 export async function generateMetadata() {
+  const { seoTitle, seoDescription, seoImage } = await getLandingPageMetaData();
+
   return {
     title: {
-      default: 'Sky High Farm',
+      default: seoTitle,
     },
-    description:
-      'Sky High Farm is a non-profit organization committed to addressing food security and nutrition by improving access to fresh, nutritious food for New Yorkers who are living in underserved communities by sustainably growing fresh fruits and vegetables and raising livestock exclusively for the purposes of donation.',
+    description: seoDescription,
     openGraph: {
       type: 'website',
       url: 'skyhighfarm.org',
-      title: 'Sky High Farm',
-      description:
-        'Sky High Farm is a non-profit organization committed to addressing food security and nutrition by improving access to fresh, nutritious food for New Yorkers who are living in underserved communities by sustainably growing fresh fruits and vegetables and raising livestock exclusively for the purposes of donation.',
+      title: seoTitle,
+      description: seoDescription,
       siteName: 'skyhighfarm.org',
       images: [
         {
-          url: '/skyhighfarm-logo.png',
+          url: urlForImage(seoImage),
           width: 1200,
           height: 630,
           alt: 'sky high farm logo',

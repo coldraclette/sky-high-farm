@@ -232,3 +232,115 @@ export async function getSingleFellowshipData(slug: string) {
     text,
   }`);
 }
+
+export async function getLandingPageMetaData() {
+  return client.fetch(groq`*[_type == "landingPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getFoodAccessPageMetaData() {
+  return client.fetch(groq`*[_type == "foodaccessPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getFellowshipPageMetaData() {
+  return client.fetch(groq`*[_type == "fellowshipPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getProgrammingPageMetaData() {
+  return client.fetch(groq`*[_type == "programmingPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getGrantsPageMetaData() {
+  return client.fetch(groq`*[_type == "grantsPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getAboutPageMetaData() {
+  return client.fetch(groq`*[_type == "aboutPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getTeamPageMetaData() {
+  return client.fetch(groq`*[_type == "teamPage"][1]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getVolunteerPageMetaData() {
+  return client.fetch(groq`*[_type == "volunteerPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getJobPageMetaData() {
+  return client.fetch(groq`*[_type == "jobPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getSupportPageMetaData() {
+  return client.fetch(groq`*[_type == "supportPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getContactPageMetaData() {
+  return client.fetch(groq`*[_type == "contactPage"][0]{
+    seoTitle,
+    seoDescription,
+    seoImage,
+  }`);
+}
+
+export async function getTeamMemberMetaData(slug: string) {
+  return client.fetch(groq`*[_type == "teamMember" && slug.current == "${slug}"][0]{
+    name,
+    seoDescription,
+    image,
+  }`);
+}
+
+export async function getSingleProgrammingProjectMetaData(slug: string) {
+  return client.fetch(groq`*[_type == "programmingProject" && slug.current == "${slug}"][0]{
+    title,
+    seoDescription,
+    projectImage,
+  }`);
+}
+
+export async function getSingleSpecialProjectMetaData(slug: string) {
+  return client.fetch(groq`*[_type == "specialProject" && slug.current == "${slug}"][0]{
+    title,
+    seoDescription,
+    projectImage,
+  }`);
+}

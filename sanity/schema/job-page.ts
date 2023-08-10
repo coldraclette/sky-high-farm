@@ -2,17 +2,27 @@ export const jobPage = {
   name: 'jobPage',
   title: 'Job Page',
   type: 'document',
+  groups: [
+    {
+      name: 'jobPageGroup',
+      title: 'Job Page fields',
+      default: true,
+    },
+    { name: 'seoGroup', title: 'SEO' },
+  ],
   fields: [
     {
       name: 'noJobOpeningsText',
       title: 'No Job Openings Text',
       type: 'string',
+      group: 'jobPageGroup',
       description: 'Will be shown before newsletter text, when no openings',
     },
     {
       name: 'jobOpeningsText',
       title: 'Job Openings Text',
       type: 'string',
+      group: 'jobPageGroup',
       description:
         'Will be shown before newsletter text, when there are openings',
     },
@@ -20,12 +30,14 @@ export const jobPage = {
       name: 'singUpText',
       title: 'Sign Up Text',
       type: 'array',
+      group: 'jobPageGroup',
       of: [{ type: 'block' }],
       description: 'Will include the newsletter sign up link and text',
     },
     {
       name: 'jobOpenings',
       title: 'Job Openings',
+      group: 'jobPageGroup',
       type: 'array',
       of: [
         {
@@ -52,6 +64,28 @@ export const jobPage = {
           ],
         },
       ],
+    },
+    {
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+      group: 'seoGroup',
+      description: 'This is the title that appears in the browser tab.',
+    },
+    {
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      group: 'seoGroup',
+      description: 'This is the description that appears on search engines.',
+    },
+    {
+      name: 'seoImage',
+      title: 'SEO Image',
+      type: 'image',
+      group: 'seoGroup',
+      description:
+        'This is the image that appears in the browser tab when the page is shared.',
     },
   ],
 };

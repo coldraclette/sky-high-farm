@@ -2,12 +2,21 @@ export const specialProject = {
   name: 'specialProject',
   title: 'Special Projects',
   type: 'document',
+  groups: [
+    {
+      name: 'specialProjectGroup',
+      title: 'Special Project Group fields',
+      default: true,
+    },
+    { name: 'seoGroup', title: 'SEO' },
+  ],
   fields: [
     {
       name: 'title',
       title: 'Title',
       type: 'string',
       description: 'This is the title of the project.',
+      group: 'specialProjectGroup',
       validation: (Rule: any) => Rule.required(),
     },
     {
@@ -15,6 +24,7 @@ export const specialProject = {
       title: 'Slug',
       type: 'slug',
       description: 'This is the url of the project.',
+      group: 'specialProjectGroup',
       options: {
         source: 'title',
         maxLength: 200,
@@ -32,6 +42,7 @@ export const specialProject = {
       type: 'image',
       description:
         'This is the image that appears on the overview and is also the first image in the project.',
+      group: 'specialProjectGroup',
       fields: [
         {
           name: 'alt',
@@ -45,12 +56,14 @@ export const specialProject = {
       name: 'subtitleGreen',
       title: 'Subtitle Green',
       type: 'string',
+      group: 'specialProjectGroup',
       description: 'This is the green text that appears under the title.',
     },
     {
       name: 'date',
       title: 'Date',
       type: 'date',
+      group: 'specialProjectGroup',
       validation: (Rule: any) => Rule.required(),
       description:
         'This is the date of the project. Sorting will be done by this field. If the flexible date field is filled out, this field will be ignored on the frontend. If the date should be for example 2021 - 2022 then write 2022-01-01.',
@@ -59,12 +72,14 @@ export const specialProject = {
       name: 'flexibleDate',
       title: 'Flexible Date',
       type: 'string',
+      group: 'specialProjectGroup',
       description:
         'Use this field for flexible date formats, e.g. "2021 - 2022" or "May 2021". If this field is filled out, the date field will be ignored on the frontend. If this field is empty, the date field will be used. Sorting will be done always by the date field.',
     },
     {
       name: 'projectInfo',
       title: 'Project Info',
+      group: 'specialProjectGroup',
       type: 'array',
       of: [{ type: 'block', styles: [{ title: 'Normal', value: 'normal' }] }],
       description:
@@ -73,6 +88,7 @@ export const specialProject = {
     {
       name: 'textContent',
       title: 'Text Content',
+      group: 'specialProjectGroup',
       type: 'array',
       of: [{ type: 'block', styles: [{ title: 'Normal', value: 'normal' }] }],
       description: 'This is the text that appears in the detail view.',
@@ -81,6 +97,7 @@ export const specialProject = {
       name: 'images',
       title: 'Images',
       type: 'array',
+      group: 'specialProjectGroup',
       of: [
         {
           type: 'image',
@@ -111,6 +128,13 @@ export const specialProject = {
           ],
         },
       ],
+    },
+    {
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      group: 'seoGroup',
+      description: 'This is the description that appears on search engines.',
     },
   ],
 };

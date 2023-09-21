@@ -5,6 +5,7 @@ import {
   getFellowshipPageData,
   getFellowshipPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 import TextContent from '../../components/TextContent';
 
@@ -44,6 +45,7 @@ export default async function Page() {
   const data = await getFellowshipPageData();
   return (
     <div className="px-5 md:px-6">
+      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       <TextContent text={data.textContent} />
       {data.fellowSections.map((staff: any) => {
         return (

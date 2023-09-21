@@ -10,6 +10,7 @@ module.exports = {
       sans: ['var(--font-sans)', 'sans-serif'],
     },
     colors: {
+      black: '#000000',
       green: '#72AE68',
       white: '#FFFFFF',
       red: '#E8342D',

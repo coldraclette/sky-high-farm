@@ -12,6 +12,18 @@ export const jobPage = {
   ],
   fields: [
     {
+      name: 'showPageTitle',
+      title: 'Show Page Title',
+      type: 'boolean',
+      group: 'jobPageGroup',
+    },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      group: 'jobPageGroup',
+    },
+    {
       name: 'noJobOpeningsText',
       title: 'No Job Openings Text',
       type: 'string',

@@ -12,6 +12,18 @@ export const foodaccessPage = {
   ],
   fields: [
     {
+      name: 'showPageTitle',
+      title: 'Show Page Title',
+      type: 'boolean',
+      group: 'foodaccessPageGroup',
+    },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      group: 'foodaccessPageGroup',
+    },
+    {
       name: 'textContent',
       title: 'Text Content',
       description: 'Add some text to the contact page. You can use links.',

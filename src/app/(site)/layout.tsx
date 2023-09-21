@@ -60,7 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={monumentGrotesk.variable}>
-      <body>{children}</body>
+      <body className="h-full w-full">{children}</body>
     </html>
   );
 }

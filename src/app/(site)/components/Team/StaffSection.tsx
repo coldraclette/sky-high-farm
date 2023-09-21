@@ -7,7 +7,7 @@ interface StaffSectionProps {
 
 export default function StaffSection({ staff, type }: StaffSectionProps) {
   return (
-    <div className="mt-4 md:mt-8">
+    <div className="mt-4 md:mt-0">
       <h2 className="text-size-1-bold mb-5 text-green md:mb-8">
         {staff.sectionTitle}
       </h2>

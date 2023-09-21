@@ -12,6 +12,18 @@ export const teamPage = {
   ],
   fields: [
     {
+      name: 'showPageTitle',
+      title: 'Show Page Title',
+      type: 'boolean',
+      group: 'teamPageGroup',
+    },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      group: 'teamPageGroup',
+    },
+    {
       name: 'staffSections',
       title: 'Staff Sections',
       description:

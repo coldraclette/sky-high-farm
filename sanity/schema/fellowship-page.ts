@@ -12,6 +12,18 @@ export const fellowshipPage = {
   ],
   fields: [
     {
+      name: 'showPageTitle',
+      title: 'Show Page Title',
+      type: 'boolean',
+      group: 'fellowshipPageGroup',
+    },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      group: 'fellowshipPageGroup',
+    },
+    {
       name: 'textContent',
       title: 'Text Content',
       description: 'Add some text to the contact page. You can use links.',

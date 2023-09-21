@@ -12,6 +12,18 @@ export const contactPage = {
   ],
   fields: [
     {
+      name: 'showPageTitle',
+      title: 'Show Page Title',
+      type: 'boolean',
+      group: 'contactPageGroup',
+    },
+    {
+      name: 'pageTitle',
+      title: 'Page Title',
+      type: 'string',
+      group: 'contactPageGroup',
+    },
+    {
       name: 'textContent',
       title: 'Text Content',
       description: 'Add some text to the contact page. You can use links.',

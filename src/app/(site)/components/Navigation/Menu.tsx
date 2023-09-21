@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { getPageSettings } from '../../../../../sanity/sanity.query';
 import MenuItem from './MenuItem';
 
 interface MenuProps {
@@ -11,6 +12,7 @@ interface MenuProps {
 
 export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [overlayColor, setOverlayColor] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -29,6 +31,24 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen]);
+
+  function hexToRgba(hex: string, alpha: number = 1) {
+    const hexWithoutHash = hex.replace('#', '');
+    const r = parseInt(hexWithoutHash.substring(0, 2), 16);
+    const g = parseInt(hexWithoutHash.substring(2, 4), 16);
+    const b = parseInt(hexWithoutHash.substring(4, 6), 16);
+
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  useEffect(() => {
+    getPageSettings().then((pageSettings) => {
+      if (pageSettings.menuColor) {
+        const rgbaColor = hexToRgba(pageSettings.menuColor, 0.8);
+        setOverlayColor(rgbaColor);
+      }
+    });
+  }, []);
 
   const handleMenuItemClicked = () => setIsOpen(false);
   return (
@@ -104,7 +124,9 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
             left: 0,
             width: '100%',
             height: '100%',
-            background: 'rgba(255, 255, 255, 0.8)',
+            background: overlayColor
+              ? overlayColor
+              : 'rgba(255, 255, 255, 0.8)',
             zIndex: 10,
           }}
         />

@@ -3,10 +3,6 @@
 @import 'tailwindcss/utilities';
 
 /* Typography */
-html {
-  height: 100%;
-  width: 100%;
-}
 body {
   @apply flex h-full flex-col justify-between bg-white font-sans text-[15px];
 }
@@ -20,7 +16,7 @@ body {
 }
 
 .text-caption {
-  @apply text-xs md:text-xl;
+  @apply text-xs md:text-base;
 }
 
 .blend-difference {

@@ -40,6 +40,8 @@ export async function getAboutPageData() {
 
 export async function getTeamPageData() {
   return client.fetch(groq`*[_type == "teamPage"][1]{
+    showPageTitle,
+    pageTitle,
     staffSections[]{
       sectionTitle,
       members[]->{
@@ -143,6 +145,8 @@ export async function getSupportPageData() {
 
 export async function getJobPageData() {
   return client.fetch(groq`*[_type == "jobPage"][0]{
+    showPageTitle,
+    pageTitle,
     noJobOpeningsText,
     jobOpeningsText,
     singUpText,
@@ -152,12 +156,16 @@ export async function getJobPageData() {
 
 export async function getContactPageData() {
   return client.fetch(groq`*[_type == "contactPage"][0]{
+    showPageTitle,
+    pageTitle,
     textContent
   }`);
 }
 
 export async function getVolunteerPageData() {
   return client.fetch(groq`*[_type == "volunteerPage"][0]{
+    showPageTitle,
+    pageTitle,
     textContent
   }`);
 }
@@ -165,6 +173,8 @@ export async function getVolunteerPageData() {
 export async function getGrantsPageData() {
   return client.fetch(
     groq`*[_type == "grantsPage"][0]{
+    showPageTitle,
+    pageTitle,
     textContent,
     grantSections[]{
       sectionTitle,
@@ -182,6 +192,8 @@ export async function getGrantsPageData() {
 export async function getFoodAccessPageData() {
   return client.fetch(
     groq`*[_type == "foodaccessPage"][0]{
+    showPageTitle,
+    pageTitle,
     textContent,
     organizations[]->{
       name,
@@ -193,6 +205,8 @@ export async function getFoodAccessPageData() {
 
 export async function getFellowshipPageData() {
   return client.fetch(groq`*[_type == "fellowshipPage"][0]{
+    showPageTitle,
+    pageTitle,
     textContent,
     fellowSections[]{
       sectionTitle,
@@ -342,5 +356,11 @@ export async function getSingleSpecialProjectMetaData(slug: string) {
     title,
     seoDescription,
     projectImage,
+  }`);
+}
+
+export async function getPageSettings() {
+  return client.fetch(groq`*[_type == "settings"][0]{
+    menuColor,
   }`);
 }

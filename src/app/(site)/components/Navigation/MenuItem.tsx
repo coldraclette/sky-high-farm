@@ -24,7 +24,7 @@ export default function MenuItem({
   return (
     <li>
       <Link
-        className="relative z-20 transition-colors hover:text-green"
+        className="relative z-20 transition-colors hover:italic hover:text-green"
         href={path}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         onClick={onItemClick}

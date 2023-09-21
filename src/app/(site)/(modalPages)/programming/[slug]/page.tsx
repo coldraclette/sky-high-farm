@@ -83,8 +83,8 @@ export default async function Page({ params }: Props) {
     <div>
       <div className="px-5 pt-4 md:px-6">
         <BackButton path="/programming" />
-        <h1 className="text-size-1-bold mt-4 md:mb-10 md:mt-5">{data.title}</h1>
-        <div className="mt-3 grid gap-4 md:mt-10 lg:grid-cols-[1fr_2fr]">
+        <h1 className="text-size-1-bold fixed mt-4 md:mt-5 z-10">{data.title}</h1>
+        <div className="mt-12 grid gap-4 md:mt-[100px] lg:grid-cols-[1fr_2fr]">
           <TextContent
             text={data.projectInfo}
             textSize="text-[15px] md:text-2xl md:leading-[28.7px] md:tracking-[0.24px]"

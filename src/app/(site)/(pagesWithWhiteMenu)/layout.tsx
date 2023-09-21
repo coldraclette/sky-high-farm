@@ -8,8 +8,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Menu color="text-white" />
       <Logo />
-      <section>{children}</section>
-      <Footer textColor='text-white' />
+      <section className="h-full w-full">{children}</section>
+      <Footer textColor="text-white" />
     </>
   );
 }

@@ -164,6 +164,16 @@ export const structure = (S: any) =>
             ])
         ),
 
+      // page settings
+      S.listItem()
+        .title('Page Settings')
+        .child(
+          S.document()
+            .schemaType('settings')
+            .documentId('settings')
+            .title('Page Settings')
+        ),
+
       ...S.documentTypeListItems().filter(
         (listItem: any) =>
           ![
@@ -184,6 +194,7 @@ export const structure = (S: any) =>
             'organizations',
             'fellow',
             'grant',
+            'settings',
           ].includes(listItem.getId())
       ),
     ]);

@@ -6,6 +6,7 @@ import {
   getFoodAccessPageData,
   getFoodAccessPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
 export const revalidate = 60;
@@ -44,6 +45,7 @@ export default async function Page() {
   const data = await getFoodAccessPageData();
   return (
     <div className="px-5 md:px-6">
+      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       <TextContent text={data.textContent} />
       <div className="mt-12 grid justify-center gap-6 md:grid-cols-2 lg:grid-cols-3">
         {data.organizations.map((org: any) => {

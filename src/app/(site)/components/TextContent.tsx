@@ -44,10 +44,12 @@ export default function TextContent({
     },
     marks: {
       link: ({ children, value }) => {
+        if (!value.href) return <span>{children}</span>;
         const rel = !value.href.startsWith('/')
           ? 'noreferrer noopener'
           : undefined;
         const target = !value.href.startsWith('/') ? '_blank' : undefined;
+
         return (
           <Link
             className="underline"
@@ -67,7 +69,9 @@ export default function TextContent({
 
   return (
     <div>
-      <PortableText value={text} components={components} />
+      <div className=" last-of-type:md:mr-48">
+        <PortableText value={text} components={components} />
+      </div>
     </div>
   );
 }

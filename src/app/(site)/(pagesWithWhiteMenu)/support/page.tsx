@@ -1,4 +1,5 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 import {
@@ -53,10 +54,10 @@ export default async function Page() {
           placeholder="blur"
           blurDataURL={urlForImageBlur(backgroundImage)}
         />
-        <div className="relative z-10 mt-40 max-w-[1200px] px-5 md:px-6">
+        <div className="relative z-[9] mt-40 max-w-[1200px] px-5 md:px-6">
           <TextContent text={textContent} color="text-white" />
-          <div className="flex">
-            <a href={link} target="_blank" rel="noreferrer noopener">
+          <div className="flex -ml-2 md:-ml-5">
+            <Link href={link} target="_blank" rel="noreferrer noopener">
               <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
                 <Image
                   src="/donate1.png"
@@ -65,7 +66,7 @@ export default async function Page() {
                   height={100}
                 />
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

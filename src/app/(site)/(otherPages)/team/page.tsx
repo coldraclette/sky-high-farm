@@ -3,6 +3,7 @@ import {
   getTeamPageData,
   getTeamPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 
 export const revalidate = 60;
@@ -37,10 +38,11 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const { staffSections } = await getTeamPageData();
+  const data = await getTeamPageData();
   return (
     <div className="px-5 md:px-6">
-      {staffSections.map((staff: any) => {
+      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+      {data.staffSections.map((staff: any) => {
         return <StaffSection key={staff._key} staff={staff} type={'team'} />;
       })}
     </div>

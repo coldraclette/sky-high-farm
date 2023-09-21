@@ -18,18 +18,12 @@ export default function Footer({
   const isMobile = windowSize.width ? windowSize.width < 770 : false; // 1024
   return (
     <footer
-      className={`p-4 flex items-end justify-between md:text-xl ${textColor} ${
+      className={`flex items-end justify-between p-4 md:text-xl ${textColor} ${
         fixed ? 'fixed bottom-0 w-full' : 'relative'
       }`}
     >
       <ul className="flex gap-2 md:mb-3 md:gap-8">
         <MenuItem path="/contact" title="Contact" />
-        <MenuItem
-          path="https://skyhighfarmuniverse.com/"
-          title="Sky High Farm Universe"
-          mobileTitle="SHF Universe"
-          external
-        />
         <MenuItem path="/jobs" title="Jobs" />
         <MenuItem
           path="https://www.instagram.com/skyhighfarmhudsonvalley/?hl=en"
@@ -41,12 +35,12 @@ export default function Footer({
       <a
         href="https://www.paypal.com/donate?hosted_button_id=ZQZQYQZQZQZQZ"
         target="_blank"
-        className="z-20"
+        className="fixed bottom-3 right-4 z-20"
       >
         {!isMobile ? (
-          <Image src="/donate2.png" width={200} height={88} alt="donate" />
+          <Image src="/donate1.png" width={200} height={88} alt="donate" />
         ) : (
-          <Image src="/donate2.png" width={90} height={41.25} alt="donate" />
+          <Image src="/donate1.png" width={90} height={41.25} alt="donate" />
         )}
       </a>
     </footer>

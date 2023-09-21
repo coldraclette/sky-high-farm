@@ -3,6 +3,7 @@ import {
   getJobPageData,
   getJobPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
 export const revalidate = 60;
@@ -41,6 +42,7 @@ export default async function Page() {
 
   return (
     <div className="px-5 md:px-6">
+      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       {data.jobOpenings &&
         data.jobOpenings.map((jobOpening: any) => (
           <div

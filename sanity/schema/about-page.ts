@@ -56,7 +56,7 @@ export const aboutPage = {
       title: 'Text Content',
       group: 'aboutPageGroup',
       description:
-        'A place for lots of text. Use blocks for separate paragraphs or different types of content.',
+        'A place for lots of text.',
       type: 'array',
       of: [{ type: 'block' }],
     },

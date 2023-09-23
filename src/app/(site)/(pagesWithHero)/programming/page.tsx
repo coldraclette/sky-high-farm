@@ -47,9 +47,10 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const data = await getProgrammingPageData();
-  const programmingProjects = await getFirstProgrammingProjects();
+  const columns = data?.showFourColumns ? 4 : 3;
+  const programmingProjects = await getFirstProgrammingProjects(columns);
   const programmingCount = await getNumberOfProgrammingProjects();
-  const specialProjects = await getFirstSpecialProjects();
+  const specialProjects = await getFirstSpecialProjects(columns);
   const specialProjectsCount = await getNumberOfSpecialProjects();
 
   const image = data?.headerImage;
@@ -78,12 +79,14 @@ export default async function Page() {
         <ProgrammingProjects
           projects={programmingProjects}
           programmingCount={programmingCount}
+          columns={columns}
         />
         <SpecialProjects
           projects={specialProjects}
           programmingCount={specialProjectsCount}
           title={specialProjectsTitle}
           textContent={specialProjectsTextContent}
+          columns={columns}
         />
       </div>
     </div>

@@ -61,6 +61,14 @@ export const programmingPage = {
       of: [{ type: 'block' }],
     },
     {
+      name: 'showFourColumns',
+      title: 'Show Four Columns',
+      description:
+        'If checked, then we show 4 columns. If unchecked, then we show 3 columns.',
+      group: 'programmingPageGroup',
+      type: 'boolean',
+    },
+    {
       name: 'specialProjectsTitle',
       title: 'Special Projects Title',
       description: 'The title of the special projects.',

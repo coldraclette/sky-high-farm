@@ -23,7 +23,7 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
   if (member.slug) {
     return (
       <Link href={`/${type}/${member.slug.current}`}>
-        <div className="relative mt-2 h-[230px] w-full md:mt-0 md:h-[520px]">
+        <div className="relative mt-2 aspect-square w-full md:mt-0">
           <Image
             src={
               member.image ? urlForImage(member.image) : '/skyhighfarm-logo.png'
@@ -50,7 +50,7 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
 
   return (
     <div>
-      <div className="relative mt-2 h-[230px] w-full md:mt-0 md:h-[520px]">
+      <div className="relative mt-2 aspect-square w-full md:mt-0 ">
         <Image
           src={
             member.image ? urlForImage(member.image) : '/skyhighfarm-logo.png'

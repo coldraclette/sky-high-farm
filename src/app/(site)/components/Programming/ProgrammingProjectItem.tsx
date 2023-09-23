@@ -29,8 +29,11 @@ export default function ProgrammingProjectItem({
   }
 
   return (
-    <Link href={`/programming/${project.slug.current}`}>
-      <div className="relative h-[230px] md:h-[400px] lg:h-[500px]">
+    <Link
+      href={`/programming/${project.slug.current}`}
+      className="overflow-hidden"
+    >
+      <div className="relative aspect-square w-full  overflow-hidden">
         <Image
           src={
             project.projectImage
@@ -38,10 +41,10 @@ export default function ProgrammingProjectItem({
               : '/skyhighfarm-logo.png'
           }
           alt={project.projectImage?.alt ? project.projectImage?.alt : ''}
-          layout="fill"
           placeholder="blur"
+          layout="fill"
           objectFit="cover"
-          className="transition-opacity duration-300 hover:opacity-40"
+          className="h-full w-full transition-opacity duration-300 hover:opacity-40"
           blurDataURL={
             project.projectImage
               ? urlForImageBlur(project.projectImage)

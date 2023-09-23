@@ -83,7 +83,9 @@ export default async function Page({ params }: Props) {
     <div>
       <div className="px-5 pt-4 md:px-6">
         <BackButton path="/programming" />
-        <h1 className="text-size-1-bold fixed mt-4 md:mt-5 z-10">{data.title}</h1>
+        <h1 className="text-size-1-bold fixed z-10 mt-4 md:mt-5">
+          {data.title}
+        </h1>
         <div className="mt-12 grid gap-4 md:mt-[100px] lg:grid-cols-[1fr_2fr]">
           <TextContent
             text={data.projectInfo}
@@ -96,7 +98,7 @@ export default async function Page({ params }: Props) {
         </div>
       </div>
       {data.projectImage && (
-        <div className="relative mt-8 flex h-[250px] w-full justify-center md:h-[780px]">
+        <div className="relative mt-8 flex aspect-square w-full justify-center">
           <Image
             src={urlForImage(data.projectImage)}
             alt={data.projectImage.alt ? data.projectImage.alt : ''}
@@ -113,7 +115,7 @@ export default async function Page({ params }: Props) {
             return (
               <div
                 key={image._key}
-                className="relative mt-4 flex h-[250px] w-full justify-center md:mt-8 md:h-[780px]"
+                className="relative mt-4 flex  aspect-square w-full justify-center md:mt-8"
               >
                 {image.imageStyle === 'portrait' && (
                   <Image

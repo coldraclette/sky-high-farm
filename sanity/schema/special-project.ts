@@ -43,6 +43,9 @@ export const specialProject = {
       description:
         'This is the image that appears on the overview and is also the first image in the project.',
       group: 'specialProjectGroup',
+      options: {
+        hotspot: true,
+      },
       fields: [
         {
           name: 'alt',

@@ -14,6 +14,7 @@ export async function getProgrammingPageData() {
     pageTitle,
     titlePosition,
     textContent,
+    showFourColumns,
     specialProjectsTitle,
     specialProjectsTextContent
   }`);
@@ -63,20 +64,9 @@ export async function getTeamMemberData(slug: string) {
   }`);
 }
 
-export async function getFirstProgrammingProjects() {
-  return client.fetch(groq`*[_type == "programmingProject"] | order(date desc) [0..5]{
-    title,
-    projectImage,
-    subtitleGreen,
-    date,
-    flexibleDate,
-    slug { current }
-  }`);
-}
-
-export async function getNextProgrammingProjects(startIndex: number) {
-  return client.fetch(groq`*[_type == "programmingProject"] | order(date desc) [${startIndex}..${
-    startIndex + 6
+export async function getFirstProgrammingProjects(columns: number) {
+  return client.fetch(groq`*[_type == "programmingProject"] | order(date desc) [0..${
+    columns * 2 - 1
   }]{
     title,
     projectImage,
@@ -87,8 +77,13 @@ export async function getNextProgrammingProjects(startIndex: number) {
   }`);
 }
 
-export async function getFirstSpecialProjects() {
-  return client.fetch(groq`*[_type == "specialProject"] | order(date desc) [0..5]{
+export async function getNextProgrammingProjects(
+  startIndex: number,
+  columns: number
+) {
+  return client.fetch(groq`*[_type == "programmingProject"] | order(date desc) [${startIndex}..${
+    startIndex + columns * 2 - 1
+  }]{    
     title,
     projectImage,
     subtitleGreen,
@@ -98,9 +93,25 @@ export async function getFirstSpecialProjects() {
   }`);
 }
 
-export async function getNextSpecialProjects(startIndex: number) {
+export async function getFirstSpecialProjects(columns: number) {
+  return client.fetch(groq`*[_type == "specialProject"] | order(date desc) [0..${
+    columns * 2 - 1
+  }]{
+    title,
+    projectImage,
+    subtitleGreen,
+    date,
+    flexibleDate,
+    slug { current }
+  }`);
+}
+
+export async function getNextSpecialProjects(
+  startIndex: number,
+  columns: number
+) {
   return client.fetch(groq`*[_type == "specialProject"] | order(date desc) [${startIndex}..${
-    startIndex + 6
+    startIndex + columns * 2 - 1
   }]{
     title,
     projectImage,

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { getNextSpecialProjects } from '../../../../../sanity/sanity.query';
+import { composeClassNames } from '../../utils';
 import TextContent from '../TextContent';
 import ProgrammingProjectItem from './ProgrammingProjectItem';
 
@@ -11,6 +12,7 @@ interface SpecialProjectsProps {
   programmingCount: number;
   title: string;
   textContent: string;
+  columns: number;
 }
 
 export default function SpecialProjects({
@@ -18,11 +20,12 @@ export default function SpecialProjects({
   programmingCount,
   title,
   textContent,
+  columns,
 }: SpecialProjectsProps) {
   const [programmingProjects, setProgrammingProjects] = useState(projects);
   const loadMoreProjects = async () => {
     const startIndex = projects.length;
-    const newProjects = await getNextSpecialProjects(startIndex);
+    const newProjects = await getNextSpecialProjects(startIndex, columns);
     setProgrammingProjects([...projects, ...newProjects]);
   };
 
@@ -31,7 +34,7 @@ export default function SpecialProjects({
       return (
         <button
           onClick={loadMoreProjects}
-          className="text-left text-red md:text-[38px] mt-2"
+          className="mt-2 text-left text-red md:text-[38px]"
         >
           Load More
         </button>
@@ -43,7 +46,12 @@ export default function SpecialProjects({
       <div className="mb-4 md:mb-8">
         <TextContent text={textContent} />
       </div>
-      <div className="mt-4 grid gap-6 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={composeClassNames('mt-4 grid gap-6 md:mt-8 md:grid-cols-2', {
+          'lg:grid-cols-3': columns === 3,
+          'lg:grid-cols-3 xl:grid-cols-4': columns === 4,
+        })}
+      >
         {programmingProjects?.map((project: any, index: any) => {
           return (
             <ProgrammingProjectItem

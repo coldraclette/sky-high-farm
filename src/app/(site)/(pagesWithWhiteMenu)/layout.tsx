@@ -9,7 +9,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Menu color="text-white" />
       <Logo />
       <section className="h-full w-full">{children}</section>
-      <Footer textColor="text-white" />
+      <div className="absolute bottom-0">
+        <Footer textColor="text-white" />
+      </div>
     </>
   );
 }

@@ -54,14 +54,16 @@ export default async function Page() {
               <div className="relative mt-2 h-[230px] w-full md:mt-0 md:h-[520px]">
                 <Image
                   src={
-                    org.image ? urlForImage(org.image) : '/skyhighfarm-logo.png'
+                    org.image.asset
+                      ? urlForImage(org.image)
+                      : '/skyhighfarm-logo.png'
                   }
                   layout="fill"
                   alt={org.alt ? org.alt : ''}
                   placeholder="blur"
                   objectFit="cover"
                   blurDataURL={
-                    org.image
+                    org.image.asset
                       ? urlForImageBlur(org.image)
                       : '/skyhighfarm-logo.png'
                   }

@@ -26,14 +26,16 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
         <div className="relative mt-2 aspect-square w-full md:mt-0">
           <Image
             src={
-              member.image ? urlForImage(member.image) : '/skyhighfarm-logo.png'
+              member.image.asset
+                ? urlForImage(member.image)
+                : '/skyhighfarm-logo.png'
             }
             layout="fill"
             alt={member.alt ? member.alt : ''}
             placeholder="blur"
             objectFit="cover"
             blurDataURL={
-              member.image
+              member.image.asset
                 ? urlForImageBlur(member.image)
                 : '/skyhighfarm-logo.png'
             }
@@ -53,14 +55,16 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
       <div className="relative mt-2 aspect-square w-full md:mt-0 ">
         <Image
           src={
-            member.image ? urlForImage(member.image) : '/skyhighfarm-logo.png'
+            member.image.asset
+              ? urlForImage(member.image)
+              : '/skyhighfarm-logo.png'
           }
           layout="fill"
           alt={member.alt ? member.alt : ''}
           placeholder="blur"
           objectFit="cover"
           blurDataURL={
-            member.image
+            member.image.asset
               ? urlForImageBlur(member.image)
               : '/skyhighfarm-logo.png'
           }

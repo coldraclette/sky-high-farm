@@ -65,7 +65,7 @@ export default async function Page() {
           imageAlt={imageAlt}
         />
         <TextContent text={textContent} />
-        {/* <Timeline timeline={timeline} /> */}
+        <Timeline timeline={timeline} />
         <TextContent text={bottomText} textSize="text-xs md:text-[20px]" />
       </div>
     </div>

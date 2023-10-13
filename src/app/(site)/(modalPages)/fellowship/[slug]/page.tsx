@@ -35,16 +35,18 @@ export default async function Page({ params }: Props) {
       <div className="relative m-auto mt-8 flex h-60 w-60 justify-center">
         <Image
           src={
-            data.image.asset ? urlForImage(data.image) : '/skyhighfarm-logo.png'
+            data?.image?.asset
+              ? urlForImage(data?.image)
+              : '/skyhighfarm-logo.png'
           }
-          alt={data.alt ? data.alt : ''}
+          alt={data?.alt ? data.alt : ''}
           placeholder="blur"
           objectFit="contain"
           height={1200}
           width={800}
           blurDataURL={
-            data.image.asset
-              ? urlForImageBlur(data.image)
+            data?.image?.asset
+              ? urlForImageBlur(data?.image)
               : '/skyhighfarm-logo.png'
           }
         />

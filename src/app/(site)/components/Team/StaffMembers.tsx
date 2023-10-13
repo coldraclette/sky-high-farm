@@ -26,17 +26,17 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
         <div className="relative mt-2 aspect-square w-full md:mt-0">
           <Image
             src={
-              member.image.asset
-                ? urlForImage(member.image)
+              member?.image?.asset
+                ? urlForImage(member?.image)
                 : '/skyhighfarm-logo.png'
             }
             layout="fill"
-            alt={member.alt ? member.alt : ''}
+            alt={member?.alt ? member?.alt : ''}
             placeholder="blur"
             objectFit="cover"
             blurDataURL={
-              member.image.asset
-                ? urlForImageBlur(member.image)
+              member?.image?.asset
+                ? urlForImageBlur(member?.image)
                 : '/skyhighfarm-logo.png'
             }
             className={`transition-opacity duration-300 hover:opacity-70 ${adjustMobilePosition(
@@ -55,16 +55,16 @@ export default function StaffMembers({ member, type }: StaffMembersProps) {
       <div className="relative mt-2 aspect-square w-full md:mt-0 ">
         <Image
           src={
-            member.image.asset
-              ? urlForImage(member.image)
+            member?.image?.asset
+              ? urlForImage(member?.image)
               : '/skyhighfarm-logo.png'
           }
           layout="fill"
-          alt={member.alt ? member.alt : ''}
+          alt={member?.alt ? member.alt : ''}
           placeholder="blur"
           objectFit="cover"
           blurDataURL={
-            member.image.asset
+            member?.image?.asset
               ? urlForImageBlur(member.image)
               : '/skyhighfarm-logo.png'
           }

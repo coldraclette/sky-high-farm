@@ -9,6 +9,7 @@ const imageBuilder = createImageUrlBuilder({
 });
 
 export const urlForImage = (source: Image) => {
+  if (!source.asset) return '/skyhighfarm-logo.png';
   return imageBuilder?.image(source).auto('format').fit('max').url();
 };
 

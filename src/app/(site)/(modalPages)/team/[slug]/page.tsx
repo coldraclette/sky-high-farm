@@ -61,7 +61,7 @@ export default async function Page({ params }: Props) {
         content={data.bio}
       />
 
-      {data?.image && (
+      {data?.image && data?.image?.asset && (
         <div className="relative mt-8 flex justify-center">
           <Image
             src={

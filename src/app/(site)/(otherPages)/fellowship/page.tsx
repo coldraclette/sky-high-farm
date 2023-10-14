@@ -49,16 +49,18 @@ export default async function Page() {
     <div className="px-5 md:px-6">
       {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       <TextContent text={data.textContent} />
-      {data.fellowSections.map((staff: any) => {
-        return (
-          <StaffSection
-            key={staff._key}
-            staff={staff}
-            type={'fellowship'}
-            columns={columns}
-          />
-        );
-      })}
+      <div className="mt-8">
+        {data.fellowSections.map((staff: any) => {
+          return (
+            <StaffSection
+              key={staff._key}
+              staff={staff}
+              type={'fellowship'}
+              columns={columns}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

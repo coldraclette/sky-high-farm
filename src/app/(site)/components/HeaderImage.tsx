@@ -16,7 +16,7 @@ export default function HeaderImage({
   title,
 }: HeaderImageProps) {
   return (
-    <div className="relative z-20 h-[80vh] w-full overflow-hidden">
+    <div className="relative h-[80vh] w-full overflow-hidden">
       <Image
         src={urlForImage(image)}
         alt={alt ? alt : ''}

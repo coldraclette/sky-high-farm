@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { getNextProgrammingProjects } from '../../../../../sanity/sanity.query';
 import { composeClassNames } from '../../utils';
@@ -18,22 +18,61 @@ export default function ProgrammingProjects({
   columns,
 }: ProgrammingProjectsProps) {
   const [programmingProjects, setProgrammingProjects] = useState(projects);
+  const [showMore, setShowMore] = useState(false);
+
   const loadMoreProjects = async () => {
-    const startIndex = projects.length;
-    const newProjects = await getNextProgrammingProjects(startIndex, columns);
-    setProgrammingProjects([...projects, ...newProjects]);
+    if (programmingProjects.length < programmingCount) {
+      const startIndex = projects.length;
+      const newProjects = await getNextProgrammingProjects(startIndex, 2);
+      setProgrammingProjects([...projects, ...newProjects]);
+    }
+    setShowMore(true);
+  };
+
+  const showLess = () => {
+    setProgrammingProjects(projects);
+    setShowMore(false);
   };
 
   const renderLoadMoreButton = () => {
-    if (programmingProjects.length < programmingCount)
+    if (programmingProjects.length < programmingCount) {
+      if (showMore) {
+        return (
+          <div className="flex gap-8">
+            <button
+              onClick={loadMoreProjects}
+              className="ml-2 mt-2 text-left text-red md:text-[38px]"
+            >
+              Load More
+            </button>
+            <button
+              onClick={showLess}
+              className="mt-2 text-left text-red md:text-[38px]"
+            >
+              Show Less
+            </button>
+          </div>
+        );
+      } else {
+        return (
+          <button
+            onClick={loadMoreProjects}
+            className="mt-2 text-left text-red md:text-[38px]"
+          >
+            Load More
+          </button>
+        );
+      }
+    } else {
       return (
         <button
-          onClick={loadMoreProjects}
+          onClick={showLess}
           className="mt-2 text-left text-red md:text-[38px]"
         >
-          Load More
+          Show Less
         </button>
       );
+    }
   };
 
   return (

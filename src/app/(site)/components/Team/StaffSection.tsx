@@ -14,7 +14,7 @@ export default function StaffSection({
 }: StaffSectionProps) {
   return (
     <div className="mt-4 md:mt-0">
-      <h2 className="text-size-1-bold mb-4 text-green md:mb-8">
+      <h2 className="mb-4 text-xl font-bold text-green md:mb-8 md:text-2xl lg:text-4xl">
         {staff.sectionTitle}
       </h2>
       {staff.members && staff.members.length !== 0 && (

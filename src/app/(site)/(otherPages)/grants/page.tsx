@@ -40,14 +40,24 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const data = await getGrantsPageData();
+  const columns = data?.showFourColumns ? 4 : 3;
 
   return (
     <div className="px-5 md:px-6">
       {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      <TextContent text={data.textContent} />
-      {data.grantSections.map((staff: any) => {
-        return <StaffSection key={staff._key} staff={staff} type={'grants'} />;
-      })}
+      <TextContent text={data.textContent} greenTitles={true} />
+      <div className="mt-8">
+        {data.grantSections.map((staff: any) => {
+          return (
+            <StaffSection
+              key={staff._key}
+              staff={staff}
+              type={'grants'}
+              columns={columns}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

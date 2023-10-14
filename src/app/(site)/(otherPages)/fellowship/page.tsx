@@ -43,13 +43,20 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const data = await getFellowshipPageData();
+  const columns = data?.showFourColumns ? 4 : 3;
+
   return (
     <div className="px-5 md:px-6">
       {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       <TextContent text={data.textContent} />
       {data.fellowSections.map((staff: any) => {
         return (
-          <StaffSection key={staff._key} staff={staff} type={'fellowship'} />
+          <StaffSection
+            key={staff._key}
+            staff={staff}
+            type={'fellowship'}
+            columns={columns}
+          />
         );
       })}
     </div>

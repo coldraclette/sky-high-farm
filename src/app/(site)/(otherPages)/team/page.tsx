@@ -39,11 +39,20 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const data = await getTeamPageData();
+  const columns = data?.showFourColumns ? 4 : 3;
+
   return (
     <div className="px-5 md:px-6">
       {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       {data.staffSections.map((staff: any) => {
-        return <StaffSection key={staff._key} staff={staff} type={'team'} />;
+        return (
+          <StaffSection
+            key={staff._key}
+            staff={staff}
+            type={'team'}
+            columns={columns}
+          />
+        );
       })}
     </div>
   );

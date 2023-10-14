@@ -43,6 +43,7 @@ export async function getTeamPageData() {
   return client.fetch(groq`*[_type == "teamPage"][1]{
     showPageTitle,
     pageTitle,
+    showFourColumns,
     staffSections[]{
       sectionTitle,
       members[]->{
@@ -187,6 +188,7 @@ export async function getGrantsPageData() {
     showPageTitle,
     pageTitle,
     textContent,
+    showFourColumns,
     grantSections[]{
       sectionTitle,
       members[]->{
@@ -206,8 +208,10 @@ export async function getFoodAccessPageData() {
     showPageTitle,
     pageTitle,
     textContent,
+    showFourColumns,
     organizations[]->{
       name,
+      image,
       slug { current },
     }
   }`
@@ -219,6 +223,7 @@ export async function getFellowshipPageData() {
     showPageTitle,
     pageTitle,
     textContent,
+    showFourColumns,
     fellowSections[]{
       sectionTitle,
       members[]->{

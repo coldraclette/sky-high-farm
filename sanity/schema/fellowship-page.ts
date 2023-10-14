@@ -32,6 +32,14 @@ export const fellowshipPage = {
       of: [{ type: 'block' }],
     },
     {
+      name: 'showFourColumns',
+      title: 'Show Four Columns',
+      description:
+        'If checked, then we show 4 columns. If unchecked, then we show 3 columns.',
+      group: 'fellowshipPageGroup',
+      type: 'boolean',
+    },
+    {
       name: 'fellowSections',
       title: 'Fellow Sections',
       description:

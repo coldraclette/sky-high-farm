@@ -24,6 +24,14 @@ export const teamPage = {
       group: 'teamPageGroup',
     },
     {
+      name: 'showFourColumns',
+      title: 'Show Four Columns',
+      description:
+        'If checked, then we show 4 columns. If unchecked, then we show 3 columns.',
+      group: 'teamPageGroup',
+      type: 'boolean',
+    },
+    {
       name: 'staffSections',
       title: 'Staff Sections',
       description:

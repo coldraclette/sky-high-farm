@@ -33,7 +33,7 @@ export default function ProgrammingProjectItem({
       href={`/programming/${project.slug.current}`}
       className="overflow-hidden"
     >
-      <div className="relative aspect-square w-full  overflow-hidden">
+      <div className="relative aspect-square w-full overflow-hidden">
         <Image
           src={
             project.projectImage

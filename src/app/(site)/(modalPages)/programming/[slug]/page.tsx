@@ -1,4 +1,5 @@
 import Image from 'next/legacy/image';
+import ModalHeading from '@/app/(site)/components/ModalHeading';
 
 import {
   urlForImage,
@@ -10,8 +11,6 @@ import {
   getSingleSpecialProjectMetaData,
   getSpecialProject,
 } from '../../../../../../sanity/sanity.query';
-import BackButton from '../../../components/BackButton';
-import TextContent from '../../../components/TextContent';
 
 interface Props {
   params: {
@@ -81,22 +80,12 @@ export default async function Page({ params }: Props) {
 
   return (
     <div>
-      <div className="px-5 pt-4 md:px-6">
-        <BackButton path="/programming" />
-        <h1 className="text-size-1-bold fixed z-10 mt-4 md:mt-5">
-          {data.title}
-        </h1>
-        <div className="mt-12 grid gap-4 md:mt-[100px] lg:grid-cols-[1fr_2fr]">
-          <TextContent
-            text={data.projectInfo}
-            textSize="text-[15px] md:text-2xl md:leading-[28.7px] md:tracking-[0.24px]"
-          />
-          <TextContent
-            text={data.textContent}
-            textSize="text-[15px] md:text-[24px] md:leading-[28.7px] md:tracking-[0.24px]"
-          />
-        </div>
-      </div>
+      <ModalHeading
+        path="/programming"
+        title={data.title}
+        info={data.projectInfo}
+        content={data.textContent}
+      />
       {data.projectImage && (
         <div className="relative mt-8 flex aspect-square w-full justify-center">
           <Image

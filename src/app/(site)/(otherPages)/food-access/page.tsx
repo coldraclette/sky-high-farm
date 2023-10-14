@@ -8,6 +8,7 @@ import {
 } from '../../../../../sanity/sanity.query';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
+import { composeClassNames } from '../../utils';
 
 export const revalidate = 60;
 
@@ -43,15 +44,22 @@ export async function generateMetadata() {
 
 export default async function Page() {
   const data = await getFoodAccessPageData();
+  const columns = data?.showFourColumns ? 4 : 3;
+
   return (
     <div className="px-5 md:px-6">
       {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
       <TextContent text={data.textContent} />
-      <div className="mt-12 grid justify-center gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={composeClassNames('my-4 grid gap-6 md:my-8 md:grid-cols-2', {
+          'lg:grid-cols-3': columns === 3,
+          'lg:grid-cols-3 xl:grid-cols-4': columns === 4,
+        })}
+      >
         {data.organizations.map((org: any) => {
           return (
             <Link key={org._key} href={`/organizations/${org.slug.current}`}>
-              <div className="relative mt-2 h-[230px] w-full md:mt-0 md:h-[520px]">
+              <div className="relative mt-2 aspect-square w-full md:mt-0">
                 <Image
                   src={
                     org?.image?.asset
@@ -61,7 +69,7 @@ export default async function Page() {
                   layout="fill"
                   alt={org?.alt ? org.alt : ''}
                   placeholder="blur"
-                  objectFit="cover"
+                  objectFit="contain"
                   blurDataURL={
                     org?.image?.asset
                       ? urlForImageBlur(org?.image)
@@ -71,7 +79,9 @@ export default async function Page() {
                 />
               </div>
 
-              <h3 className="text-size-1 mt-2 md:mt-4">{org.name}</h3>
+              <h3 className="mt-2 text-lg md:text-2xl lg:text-3xl">
+                {org.name}
+              </h3>
             </Link>
           );
         })}

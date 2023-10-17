@@ -1,5 +1,6 @@
 import Image from 'next/legacy/image';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
+import { composeClassNames } from '@/app/(site)/utils';
 
 import {
   urlForImage,
@@ -87,46 +88,70 @@ export default async function Page({ params }: Props) {
         content={data.textContent}
       />
       {data.projectImage && (
-        <div className="relative mt-8 flex aspect-square w-full justify-center">
-          <Image
-            src={urlForImage(data.projectImage)}
-            alt={data.projectImage.alt ? data.projectImage.alt : ''}
-            layout="fill"
-            objectFit="cover"
-            placeholder="blur"
-            blurDataURL={urlForImageBlur(data.projectImage)}
-          />
-        </div>
+        <>
+          <div className="relative mt-8 flex aspect-square w-full justify-center">
+            <Image
+              src={urlForImage(data.projectImage)}
+              alt={data.projectImage.alt ? data.projectImage.alt : ''}
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={urlForImageBlur(data.projectImage)}
+            />
+          </div>
+          {data.projectImage.credit && (
+            <p className="pr-2 text-right text-xs md:mt-1 md:pr-4 md:text-sm">
+              {data.projectImage.credit}
+            </p>
+          )}
+        </>
       )}
       <div>
         {data.images &&
           data.images.map((image: any) => {
             return (
-              <div
-                key={image._key}
-                className="relative mt-4 flex  aspect-square w-full justify-center md:mt-8"
-              >
-                {image.imageStyle === 'portrait' && (
-                  <Image
-                    src={urlForImage(image)}
-                    alt={image.alt ? image.alt : ''}
-                    layout="fill"
-                    objectFit="contain"
-                    placeholder="blur"
-                    blurDataURL={urlForImageBlur(image)}
-                  />
+              <>
+                <div
+                  key={image._key}
+                  className="relative mt-4 flex  aspect-square w-full justify-center md:mt-8"
+                >
+                  {image.imageStyle === 'portrait' && (
+                    <Image
+                      src={urlForImage(image)}
+                      alt={image.alt ? image.alt : ''}
+                      layout="fill"
+                      objectFit="contain"
+                      placeholder="blur"
+                      blurDataURL={urlForImageBlur(image)}
+                    />
+                  )}
+                  {image.imageStyle === 'fullWidth' && (
+                    <>
+                      <Image
+                        src={urlForImage(image)}
+                        alt={image.alt ? image.alt : ''}
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={urlForImageBlur(image)}
+                      />
+                    </>
+                  )}
+                </div>
+                {image.credit && (
+                  <p
+                    className={composeClassNames(
+                      'pr-2 text-xs md:mt-1 md:pr-4 md:text-sm',
+                      {
+                        'text-center': image.imageStyle === 'portrait',
+                        'text-right': image.imageStyle === 'fullWidth',
+                      }
+                    )}
+                  >
+                    {image.credit}
+                  </p>
                 )}
-                {image.imageStyle === 'fullWidth' && (
-                  <Image
-                    src={urlForImage(image)}
-                    alt={image.alt ? image.alt : ''}
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={urlForImageBlur(image)}
-                  />
-                )}
-              </div>
+              </>
             );
           })}
       </div>

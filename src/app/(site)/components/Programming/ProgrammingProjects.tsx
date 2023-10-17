@@ -22,9 +22,9 @@ export default function ProgrammingProjects({
 
   const loadMoreProjects = async () => {
     if (programmingProjects.length < programmingCount) {
-      const startIndex = projects.length;
-      const newProjects = await getNextProgrammingProjects(startIndex, 2);
-      setProgrammingProjects([...projects, ...newProjects]);
+      const startIndex = programmingProjects.length;
+      const newProjects = await getNextProgrammingProjects(startIndex, columns);
+      setProgrammingProjects([...programmingProjects, ...newProjects]);
     }
     setShowMore(true);
   };

@@ -69,7 +69,7 @@ export default function TextContent({
 
   return (
     <div>
-      <div className=" last-of-type:md:mr-48">
+      <div className="last-of-type:xl:mr-48">
         <PortableText value={text} components={components} />
       </div>
     </div>

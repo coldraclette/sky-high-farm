@@ -24,6 +24,21 @@ export const jobPage = {
       group: 'jobPageGroup',
     },
     {
+      name: 'backgroundImage',
+      title: 'Background Image',
+      description: 'Full bleed background image',
+      group: 'jobPageGroup',
+      type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        },
+      ],
+    },
+    {
       name: 'noJobOpeningsText',
       title: 'No Job Openings Text',
       type: 'string',

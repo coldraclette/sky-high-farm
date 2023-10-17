@@ -49,6 +49,11 @@ export const programmingProject = {
           title: 'Alternative text',
           description: 'Important for SEO and accessiblity.',
         },
+        {
+          name: 'credit',
+          type: 'string',
+          title: 'Credit',
+        },
       ],
     },
     {
@@ -123,6 +128,11 @@ export const programmingProject = {
               type: 'string',
               title: 'Alternative text',
               description: 'Important for SEO and accessiblity.',
+            },
+            {
+              name: 'credit',
+              type: 'string',
+              title: 'Credit',
             },
           ],
         },

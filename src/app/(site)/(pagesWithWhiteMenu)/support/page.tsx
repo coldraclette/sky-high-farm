@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
@@ -56,7 +56,7 @@ export default async function Page() {
         />
         <div className="relative z-[9] mt-40 max-w-[1200px] px-5 md:px-6">
           <TextContent text={textContent} color="text-white" />
-          <div className="flex -ml-2 md:-ml-5">
+          <div className="-ml-2 flex md:-ml-5">
             <Link href={link} target="_blank" rel="noreferrer noopener">
               <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
                 <Image

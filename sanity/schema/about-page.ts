@@ -13,9 +13,8 @@ export const aboutPage = {
   fields: [
     {
       name: 'headerImage',
-      title: 'Header Image',
-      description:
-        'Big image for the header. In the frontend it takes about 80vh.',
+      title: 'Background Image',
+      description: 'Full bleed background image',
       group: 'aboutPageGroup',
       type: 'image',
       fields: [
@@ -24,6 +23,11 @@ export const aboutPage = {
           type: 'string',
           title: 'Alternative text',
           description: 'Important for SEO and accessiblity.',
+        },
+        {
+          name: 'credit',
+          type: 'string',
+          title: 'Credit',
         },
       ],
     },
@@ -55,8 +59,7 @@ export const aboutPage = {
       name: 'textContent',
       title: 'Text Content',
       group: 'aboutPageGroup',
-      description:
-        'A place for lots of text.',
+      description: 'A place for lots of text.',
       type: 'array',
       of: [{ type: 'block' }],
     },

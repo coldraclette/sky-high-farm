@@ -127,7 +127,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
             background: overlayColor
               ? overlayColor
               : 'rgba(255, 255, 255, 0.8)',
-            zIndex: 10,
+            zIndex: 20,
           }}
         />
       )}

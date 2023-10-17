@@ -4,7 +4,7 @@ import { urlForImage, urlForImageBlur } from '../../../../sanity/lib/image';
 
 interface HeaderImageProps {
   image: any;
-  alt: string;
+  alt?: string;
   titlePosition: string;
   title: string;
 }

@@ -44,6 +44,7 @@ export default async function Page() {
 
   const image = data?.headerImage;
   const imageAlt = data?.headerImage?.alt;
+  const imageCredit = data?.headerImage?.credit;
   const title = data?.pageTitle;
   const titlePosition = data?.titlePosition;
   const textContent = data?.textContent;
@@ -62,7 +63,7 @@ export default async function Page() {
         <HeaderImageTitleAndAlt
           title={title}
           titlePosition={titlePosition}
-          imageAlt={imageAlt}
+          imageAlt={imageCredit}
         />
         <TextContent text={textContent} />
         <Timeline timeline={timeline} />

@@ -24,6 +24,21 @@ export const contactPage = {
       group: 'contactPageGroup',
     },
     {
+      name: 'backgroundImage',
+      title: 'Background Image',
+      description: 'Full bleed background image',
+      group: 'contactPageGroup',
+      type: 'image',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        },
+      ],
+    },
+    {
       name: 'textContent',
       title: 'Text Content',
       description: 'Add some text to the contact page. You can use links.',

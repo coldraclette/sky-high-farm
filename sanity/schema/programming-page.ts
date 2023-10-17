@@ -25,6 +25,11 @@ export const programmingPage = {
           title: 'Alternative text',
           description: 'Important for SEO and accessiblity.',
         },
+        {
+          name: 'credit',
+          type: 'string',
+          title: 'Credit',
+        },
       ],
     },
     {
@@ -54,8 +59,7 @@ export const programmingPage = {
     {
       name: 'textContent',
       title: 'Text Content',
-      description:
-        'A place for lots of text.',
+      description: 'A place for lots of text.',
       group: 'programmingPageGroup',
       type: 'array',
       of: [{ type: 'block' }],
@@ -78,8 +82,7 @@ export const programmingPage = {
     {
       name: 'specialProjectsTextContent',
       title: 'Special projects text tontent',
-      description:
-        'A place for lots of text.',
+      description: 'A place for lots of text.',
       group: 'programmingPageGroup',
       type: 'array',
       of: [{ type: 'block' }],

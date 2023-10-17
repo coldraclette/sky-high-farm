@@ -23,23 +23,63 @@ export default function SpecialProjects({
   columns,
 }: SpecialProjectsProps) {
   const [programmingProjects, setProgrammingProjects] = useState(projects);
+  const [showMore, setShowMore] = useState(false);
+
   const loadMoreProjects = async () => {
-    const startIndex = projects.length;
-    const newProjects = await getNextSpecialProjects(startIndex, columns);
-    setProgrammingProjects([...projects, ...newProjects]);
+    if (programmingProjects.length < programmingCount) {
+      const startIndex = programmingProjects.length;
+      const newProjects = await getNextSpecialProjects(startIndex, columns);
+      setProgrammingProjects([...programmingProjects, ...newProjects]);
+    }
+    setShowMore(true);
+  };
+
+  const showLess = () => {
+    setProgrammingProjects(projects);
+    setShowMore(false);
   };
 
   const renderLoadMoreButton = () => {
-    if (programmingProjects.length < programmingCount)
+    if (programmingProjects.length < programmingCount) {
+      if (showMore) {
+        return (
+          <div className="flex gap-8">
+            <button
+              onClick={loadMoreProjects}
+              className="ml-2 mt-2 text-left text-red md:text-[38px]"
+            >
+              Load More
+            </button>
+            <button
+              onClick={showLess}
+              className="mt-2 text-left text-red md:text-[38px]"
+            >
+              Show Less
+            </button>
+          </div>
+        );
+      } else {
+        return (
+          <button
+            onClick={loadMoreProjects}
+            className="mt-2 text-left text-red md:text-[38px]"
+          >
+            Load More
+          </button>
+        );
+      }
+    } else {
       return (
         <button
-          onClick={loadMoreProjects}
+          onClick={showLess}
           className="mt-2 text-left text-red md:text-[38px]"
         >
-          Load More
+          Show Less
         </button>
       );
+    }
   };
+  
   return (
     <div className="mb-4 md:mb-8">
       <h2 className="text-size-1-bold mb-4 md:mb-8">{title}</h2>

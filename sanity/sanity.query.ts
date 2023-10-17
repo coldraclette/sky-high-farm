@@ -159,6 +159,7 @@ export async function getJobPageData() {
   return client.fetch(groq`*[_type == "jobPage"][0]{
     showPageTitle,
     pageTitle,
+    backgroundImage,
     noJobOpeningsText,
     jobOpeningsText,
     singUpText,
@@ -170,6 +171,7 @@ export async function getContactPageData() {
   return client.fetch(groq`*[_type == "contactPage"][0]{
     showPageTitle,
     pageTitle,
+    backgroundImage,
     textContent
   }`);
 }

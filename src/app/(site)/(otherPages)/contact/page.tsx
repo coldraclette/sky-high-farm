@@ -1,4 +1,6 @@
-import { urlForImage } from '../../../../../sanity/lib/image';
+import Image from 'next/legacy/image';
+
+import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 import {
   getContactPageData,
   getContactPageMetaData,
@@ -40,10 +42,34 @@ export async function generateMetadata() {
 export default async function Page() {
   const data = await getContactPageData();
 
+  if (data.backgroundImage && data.backgroundImage.asset) {
+    return (
+      <>
+        <div className="fixed left-0 top-0 z-10 h-screen w-full bg-black/10"></div>
+        <Image
+          alt={data.backgroundImage.alt}
+          src={urlForImage(data.backgroundImage)}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={urlForImageBlur(data.backgroundImage)}
+        />
+        <div className="relative z-10 px-5 md:px-6">
+          {data.showPageTitle && (
+            <PageTitle pageTitle={data.pageTitle} color="text-white" />
+          )}
+          <TextContent text={data.textContent} color="text-white" />
+        </div>
+      </>
+    );
+  }
+
   return (
-    <div className="px-5 md:px-6">
-      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      <TextContent text={data.textContent} />
-    </div>
+    <>
+      <div className="relative px-5 md:px-6">
+        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+        <TextContent text={data.textContent} />
+      </div>
+    </>
   );
 }

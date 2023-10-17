@@ -35,6 +35,10 @@ export default function ProgrammingProjects({
   };
 
   const renderLoadMoreButton = () => {
+    if (programmingProjects.length === programmingCount && !showMore) {
+      return null;
+    }
+
     if (programmingProjects.length < programmingCount) {
       if (showMore) {
         return (

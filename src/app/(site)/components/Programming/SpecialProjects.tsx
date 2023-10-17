@@ -40,6 +40,10 @@ export default function SpecialProjects({
   };
 
   const renderLoadMoreButton = () => {
+    if (programmingProjects.length === programmingCount && !showMore) {
+      return null;
+    }
+
     if (programmingProjects.length < programmingCount) {
       if (showMore) {
         return (
@@ -79,7 +83,7 @@ export default function SpecialProjects({
       );
     }
   };
-  
+
   return (
     <div className="mb-4 md:mb-8">
       <h2 className="text-size-1-bold mb-4 md:mb-8">{title}</h2>

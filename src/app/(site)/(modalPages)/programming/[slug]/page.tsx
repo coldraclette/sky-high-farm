@@ -125,7 +125,7 @@ export default async function Page({ params }: Props) {
                       blurDataURL={urlForImageBlur(image)}
                     />
                   )}
-                  {image.imageStyle === 'fullWidth' && (
+                  {(image.imageStyle === 'fullWidth' || !image.imageStyle) && (
                     <>
                       <Image
                         src={urlForImage(image)}

@@ -1,4 +1,5 @@
 import Image from 'next/legacy/image';
+import ModalSinglePortrait from '@/app/(site)/components/Images/ModalSinglePortrait';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 
 import {
@@ -52,6 +53,10 @@ export async function generateMetadata({ params }: Props) {
 export default async function Page({ params }: Props) {
   const data = await getTeamMemberData(params.slug);
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <div>
       <ModalHeading
@@ -62,25 +67,7 @@ export default async function Page({ params }: Props) {
       />
 
       {data?.image && data?.image?.asset && (
-        <div className="relative mt-8 flex justify-center">
-          <Image
-            src={
-              data?.image?.asset
-                ? urlForImage(data?.image)
-                : '/skyhighfarm-logo.png'
-            }
-            alt={data?.alt ? data.alt : ''}
-            placeholder="blur"
-            objectFit="cover"
-            height={1200}
-            width={800}
-            blurDataURL={
-              data?.image?.asset
-                ? urlForImageBlur(data?.image)
-                : '/skyhighfarm-logo.png'
-            }
-          />
-        </div>
+        <ModalSinglePortrait image={data.image} />
       )}
     </div>
   );

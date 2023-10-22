@@ -3,6 +3,7 @@ import {
   getGrantsPageData,
   getGrantsPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import Footer from '../../components/Navigation/Footer';
 import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 import TextContent from '../../components/TextContent';
@@ -42,22 +43,29 @@ export default async function Page() {
   const data = await getGrantsPageData();
   const columns = data?.showFourColumns ? 4 : 3;
 
+  if (!data) {
+    return null;
+  }
+
   return (
-    <div className="px-5 md:px-6">
-      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      <TextContent text={data.textContent} greenTitles={true} />
-      <div className="mt-8">
-        {data.grantSections.map((staff: any) => {
-          return (
-            <StaffSection
-              key={staff._key}
-              staff={staff}
-              type={'grants'}
-              columns={columns}
-            />
-          );
-        })}
+    <>
+      <div className="px-5 md:px-6">
+        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+        <TextContent text={data.textContent} greenTitles={true} />
+        <div className="mt-8">
+          {data.grantSections.map((staff: any) => {
+            return (
+              <StaffSection
+                key={staff._key}
+                staff={staff}
+                type={'grants'}
+                columns={columns}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

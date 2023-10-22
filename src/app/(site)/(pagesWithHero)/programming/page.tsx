@@ -4,6 +4,7 @@ import {
   getFirstSpecialProjects,
   getNumberOfProgrammingProjects,
   getNumberOfSpecialProjects,
+  getPageSettings,
   getProgrammingPageData,
   getProgrammingPageMetaData,
 } from '../../../../../sanity/sanity.query';

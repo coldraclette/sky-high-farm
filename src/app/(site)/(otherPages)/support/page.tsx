@@ -1,9 +1,10 @@
 import Image from 'next/legacy/image';
+import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 import {
-  getContactPageData,
-  getContactPageMetaData,
+  getSupportPageData,
+  getSupportPageMetaData,
 } from '../../../../../sanity/sanity.query';
 import BackgroundImage from '../../components/Images/BackgroundImage';
 import Footer from '../../components/Navigation/Footer';
@@ -13,7 +14,7 @@ import TextContent from '../../components/TextContent';
 export const revalidate = 60;
 
 export async function generateMetadata() {
-  const { seoTitle, seoDescription, seoImage } = await getContactPageMetaData();
+  const { seoTitle, seoDescription, seoImage } = await getSupportPageMetaData();
 
   return {
     title: {
@@ -42,16 +43,28 @@ export async function generateMetadata() {
 }
 
 export default async function Page() {
-  const data = await getContactPageData();
+  const data = await getSupportPageData();
 
   if (data.backgroundImage && data.backgroundImage.asset) {
     return (
       <div className="flex h-full flex-col justify-between">
-        <div className="relative z-10 px-5 md:px-6">
+        <div className="relative z-10 max-w-[1200px] px-5 md:px-6">
           {data.showPageTitle && (
             <PageTitle pageTitle={data.pageTitle} color="text-white" />
           )}
           <TextContent text={data.textContent} color="text-white" />
+          <div className="-ml-2 flex md:-ml-5">
+            <Link href={data.link} target="_blank" rel="noreferrer noopener">
+              <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
+                <Image
+                  src={urlForImage(data.donateButtonImage)}
+                  alt={data.donateButtonImage.alt}
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+            </Link>
+          </div>
         </div>
         <BackgroundImage backgroundImage={data.backgroundImage} />
         <Footer textColor="text-white" />
@@ -64,6 +77,20 @@ export default async function Page() {
       <div className="relative px-5 md:px-6">
         {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
         <TextContent text={data.textContent} />
+        {data.link && data.donateButtonImage && (
+          <div className="-ml-2 flex md:-ml-5">
+            <Link href={data.link} target="_blank" rel="noreferrer noopener">
+              <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
+                <Image
+                  src={urlForImage(data.donateButtonImage)}
+                  alt={data.donateButtonImage.alt}
+                  width={250}
+                  height={100}
+                />
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
       <Footer />
     </div>

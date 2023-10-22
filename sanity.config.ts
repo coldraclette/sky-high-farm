@@ -4,6 +4,8 @@
 
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
+import { media } from 'sanity-plugin-media';
+import { simplerColorInput } from 'sanity-plugin-simpler-color-input';
 import { deskTool } from 'sanity/desk';
 
 import { structure } from './sanity/deskStructure';
@@ -22,8 +24,7 @@ export default defineConfig({
       // Desk tool configuration
       structure,
     }),
-    // Vision is a tool that lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
-    // visionTool({ defaultApiVersion: apiVersion }),
+    media(),
+    simplerColorInput(),
   ],
 });

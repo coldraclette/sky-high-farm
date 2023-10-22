@@ -6,15 +6,14 @@ export const settings = {
     {
       name: 'menuColor',
       title: 'Menu Overlay Color',
-      type: 'string',
+      type: 'simplerColor',
       options: {
-        list: [
-          { title: 'Blue', value: '#70BFE9' },
-          { title: 'Green', value: '#72AE68' },
-          { title: 'Yellow', value: '#E8C32A' },
-          { title: 'Orange', value: '#DB6634' },
+        colorList: [
+          { label: 'Blue', value: '#70BFE9' },
+          { label: 'Green', value: '#72AE68' },
+          { label: 'Yellow', value: '#E8C32A' },
+          { label: 'Orange', value: '#DB6634' },
         ],
-        layout: 'radio',
       },
     },
   ],

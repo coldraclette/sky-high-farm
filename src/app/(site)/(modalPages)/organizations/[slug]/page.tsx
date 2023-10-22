@@ -17,6 +17,11 @@ export const revalidate = 60;
 
 export default async function Page({ params }: Props) {
   const data = await getSingleOrganizationData(params.slug);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div>
       <ModalHeading

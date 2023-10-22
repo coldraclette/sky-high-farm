@@ -25,6 +25,20 @@ export const supportPage = {
       type: 'url',
     },
     {
+      name: 'donateButtonImage',
+      title: 'Donate Button Image',
+      type: 'image',
+      group: 'supportPageGroup',
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        },
+      ],
+    },
+    {
       name: 'backgroundImage',
       title: 'Background Image',
       type: 'image',

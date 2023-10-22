@@ -137,6 +137,19 @@ export const programmingProject = {
           ],
         },
       ],
+      // TODO: FIX THIS PREVIEW
+      preview: {
+        select: {
+          image: 'image',
+          credit: 'image.credit',
+        },
+        prepare({ image, credit }: any) {
+          return {
+            title: credit ? `Image credit: ${credit}` : 'No credit',
+            media: image,
+          };
+        },
+      },
     },
     {
       name: 'seoDescription',

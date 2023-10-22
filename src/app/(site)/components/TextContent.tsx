@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 
+import { composeClassNames } from '../utils';
+
 interface TextContentProps {
   text: any;
   textSize?: string;
@@ -52,7 +54,9 @@ export default function TextContent({
 
         return (
           <Link
-            className="underline"
+            className={composeClassNames(
+              'underline transition-colors hover:italic'
+            )}
             href={value.href}
             target={target}
             rel={rel}

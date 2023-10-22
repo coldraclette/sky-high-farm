@@ -151,6 +151,7 @@ export async function getSupportPageData() {
   return client.fetch(groq`*[_type == "supportPage"][0]{
     textContent,
     link,
+    donateButtonImage,
     backgroundImage
   }`);
 }
@@ -250,23 +251,24 @@ export async function getSingleOrganizationData(slug: string) {
 export async function getSingleGrantsData(slug: string) {
   return client.fetch(groq`*[_type == "grant" && slug.current == "${slug}"][0]{
     name,
-    orgInfo,
+    jobTitle,
+    bio,
     image,
-    text,
   }`);
 }
 
 export async function getSingleFellowshipData(slug: string) {
   return client.fetch(groq`*[_type == "fellow" && slug.current == "${slug}"][0]{
     name,
-    orgInfo,
+    jobTitle,
+    bio,
     image,
-    text,
   }`);
 }
 
 export async function getLandingPageMetaData() {
   return client.fetch(groq`*[_type == "landingPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -275,6 +277,7 @@ export async function getLandingPageMetaData() {
 
 export async function getFoodAccessPageMetaData() {
   return client.fetch(groq`*[_type == "foodaccessPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -283,6 +286,7 @@ export async function getFoodAccessPageMetaData() {
 
 export async function getFellowshipPageMetaData() {
   return client.fetch(groq`*[_type == "fellowshipPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -291,6 +295,7 @@ export async function getFellowshipPageMetaData() {
 
 export async function getProgrammingPageMetaData() {
   return client.fetch(groq`*[_type == "programmingPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -299,6 +304,7 @@ export async function getProgrammingPageMetaData() {
 
 export async function getGrantsPageMetaData() {
   return client.fetch(groq`*[_type == "grantsPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -307,6 +313,7 @@ export async function getGrantsPageMetaData() {
 
 export async function getAboutPageMetaData() {
   return client.fetch(groq`*[_type == "aboutPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -315,6 +322,7 @@ export async function getAboutPageMetaData() {
 
 export async function getTeamPageMetaData() {
   return client.fetch(groq`*[_type == "teamPage"][1]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -323,6 +331,7 @@ export async function getTeamPageMetaData() {
 
 export async function getVolunteerPageMetaData() {
   return client.fetch(groq`*[_type == "volunteerPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -331,6 +340,7 @@ export async function getVolunteerPageMetaData() {
 
 export async function getJobPageMetaData() {
   return client.fetch(groq`*[_type == "jobPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -339,6 +349,7 @@ export async function getJobPageMetaData() {
 
 export async function getSupportPageMetaData() {
   return client.fetch(groq`*[_type == "supportPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,
@@ -347,6 +358,7 @@ export async function getSupportPageMetaData() {
 
 export async function getContactPageMetaData() {
   return client.fetch(groq`*[_type == "contactPage"][0]{
+    title,
     seoTitle,
     seoDescription,
     seoImage,

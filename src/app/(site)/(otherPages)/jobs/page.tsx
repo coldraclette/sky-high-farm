@@ -5,6 +5,7 @@ import {
   getJobPageData,
   getJobPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import Footer from '../../components/Navigation/Footer';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
@@ -44,7 +45,7 @@ export default async function Page() {
 
   if (data.backgroundImage && data.backgroundImage.asset) {
     return (
-      <>
+      <div className="flex h-full flex-col justify-between">
         <div className="relative z-10 px-5 md:px-6">
           {data.showPageTitle && (
             <PageTitle pageTitle={data.pageTitle} color="text-white" />
@@ -81,34 +82,38 @@ export default async function Page() {
             blurDataURL={urlForImageBlur(data.backgroundImage)}
           />
         </div>
-      </>
+        <Footer textColor='text-white' />
+      </div>
     );
   }
 
   return (
-    <div className="px-5 md:px-6">
-      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      {data.jobOpenings &&
-        data.jobOpenings.map((jobOpening: any) => (
-          <div
-            key={jobOpening._key}
-            className="mb-8 grid gap-4 md:mb-16 lg:grid-cols-[1fr_2fr]"
-          >
-            <div>
-              <h2 className="text-size-1">{jobOpening.title}</h2>
-              <h3 className="text-size-1 text-green">
-                {jobOpening.additionalInfo}
-              </h3>
+    <div className="flex h-full flex-col justify-between">
+      <div className="px-5 md:px-6">
+        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+        {data.jobOpenings &&
+          data.jobOpenings.map((jobOpening: any) => (
+            <div
+              key={jobOpening._key}
+              className="mb-8 grid gap-4 md:mb-16 lg:grid-cols-[1fr_2fr]"
+            >
+              <div>
+                <h2 className="text-size-1">{jobOpening.title}</h2>
+                <h3 className="text-size-1 text-green">
+                  {jobOpening.additionalInfo}
+                </h3>
+              </div>
+              <TextContent text={jobOpening.description} />
             </div>
-            <TextContent text={jobOpening.description} />
-          </div>
-        ))}
-      <div>
-        <p className={`text-size-1 mb-4 md:mb-8`}>
-          {data.jobOpenings ? data.jobOpeningsText : data.noJobOpeningsText}
-        </p>
-        <TextContent text={data.singUpText} />
+          ))}
+        <div>
+          <p className={`text-size-1 mb-4 md:mb-8`}>
+            {data.jobOpenings ? data.jobOpeningsText : data.noJobOpeningsText}
+          </p>
+          <TextContent text={data.singUpText} />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 }

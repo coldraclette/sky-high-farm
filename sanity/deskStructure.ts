@@ -17,14 +17,7 @@ export const structure = (S: any) =>
                     .title('Landing Page')
                 ),
 
-              S.listItem()
-                .title('Programming Page')
-                .child(
-                  S.document()
-                    .schemaType('programmingPage')
-                    .documentId('programmingPage')
-                    .title('Programming Page')
-                ),
+              S.divider(),
 
               S.listItem()
                 .title('About Page')
@@ -33,33 +26,6 @@ export const structure = (S: any) =>
                     .schemaType('aboutPage')
                     .documentId('aboutPage')
                     .title('About Page')
-                ),
-
-              S.listItem()
-                .title('Team Page')
-                .child(
-                  S.document()
-                    .schemaType('teamPage')
-                    .documentId('teamPage')
-                    .title('Team Page')
-                ),
-
-              S.listItem()
-                .title('Support Page')
-                .child(
-                  S.document()
-                    .schemaType('supportPage')
-                    .documentId('supportPage')
-                    .title('Support Page')
-                ),
-
-              S.listItem()
-                .title('Job Page')
-                .child(
-                  S.document()
-                    .schemaType('jobPage')
-                    .documentId('jobPage')
-                    .title('Job Page')
                 ),
 
               S.listItem()
@@ -72,21 +38,12 @@ export const structure = (S: any) =>
                 ),
 
               S.listItem()
-                .title('Volunteer Page')
+                .title('Fellowship Page')
                 .child(
                   S.document()
-                    .schemaType('volunteerPage')
-                    .documentId('volunteerPage')
-                    .title('Volunteer Page')
-                ),
-
-              S.listItem()
-                .title('Grants Page')
-                .child(
-                  S.document()
-                    .schemaType('grantsPage')
-                    .documentId('grantsPage')
-                    .title('Grants Page')
+                    .schemaType('fellowshipPage')
+                    .documentId('fellowshipPage')
+                    .title('Fellowship Page')
                 ),
 
               S.listItem()
@@ -99,12 +56,57 @@ export const structure = (S: any) =>
                 ),
 
               S.listItem()
-                .title('Fellowship Page')
+                .title('Grants Page')
                 .child(
                   S.document()
-                    .schemaType('fellowshipPage')
-                    .documentId('fellowshipPage')
-                    .title('Fellowship Page')
+                    .schemaType('grantsPage')
+                    .documentId('grantsPage')
+                    .title('Grants Page')
+                ),
+
+              S.listItem()
+                .title('Job Page')
+                .child(
+                  S.document()
+                    .schemaType('jobPage')
+                    .documentId('jobPage')
+                    .title('Job Page')
+                ),
+
+              S.listItem()
+                .title('Programming Page')
+                .child(
+                  S.document()
+                    .schemaType('programmingPage')
+                    .documentId('programmingPage')
+                    .title('Programming Page')
+                ),
+
+              S.listItem()
+                .title('Support Page')
+                .child(
+                  S.document()
+                    .schemaType('supportPage')
+                    .documentId('supportPage')
+                    .title('Support Page')
+                ),
+
+              S.listItem()
+                .title('Team Page')
+                .child(
+                  S.document()
+                    .schemaType('teamPage')
+                    .documentId('teamPage')
+                    .title('Team Page')
+                ),
+
+              S.listItem()
+                .title('Volunteer Page')
+                .child(
+                  S.document()
+                    .schemaType('volunteerPage')
+                    .documentId('volunteerPage')
+                    .title('Volunteer Page')
                 ),
             ])
         ),
@@ -195,9 +197,8 @@ export const structure = (S: any) =>
             'fellow',
             'grant',
             'settings',
+            'media.tag',
           ].includes(listItem.getId())
       ),
     ]);
 
-// https://www.sanity.io/docs/create-a-link-to-a-single-edit-page-in-your-main-document-type-list
-// https://www.sanity.io/docs/manually-group-items-in-a-pane

@@ -26,7 +26,6 @@ export const grantsPage = {
     {
       name: 'textContent',
       title: 'Text Content',
-      description: 'Add some text to the contact page. You can use links.',
       group: 'grantsPageGroup',
       type: 'array',
       of: [{ type: 'block' }],

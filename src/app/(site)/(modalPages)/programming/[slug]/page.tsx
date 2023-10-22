@@ -1,5 +1,6 @@
 import Image from 'next/legacy/image';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
+import NotFound from '@/app/(site)/not-found';
 import { composeClassNames } from '@/app/(site)/utils';
 
 import {
@@ -26,17 +27,21 @@ export async function generateMetadata({ params }: Props) {
 
   try {
     data = await getSingleProgrammingProjectMetaData(params.slug);
-  } catch (error) {}
+  } catch (error) {
+    console.log('Failed to fetch programming project:', error);
+  }
 
   if (!data) {
     try {
       data = await getSingleSpecialProjectMetaData(params.slug);
-    } catch (error) {}
+    } catch (error) {
+      console.log('Failed to fetch special project:', error);
+    }
   }
 
   return {
     title: {
-      default: `Sky High Farm | ${data.title}`,
+      default: `Sky High Farm | ${data.title ? data.title : ''}`,
     },
     description: data.seoDescription,
     openGraph: {
@@ -79,6 +84,10 @@ export default async function Page({ params }: Props) {
     }
   }
 
+  if (!data) {
+    return <NotFound />;
+  }
+
   return (
     <div>
       <ModalHeading
@@ -108,52 +117,55 @@ export default async function Page({ params }: Props) {
       )}
       <div>
         {data.images &&
-          data.images.map((image: any) => {
-            return (
-              <>
-                <div
-                  key={image._key}
-                  className="relative mt-4 flex  aspect-square w-full justify-center md:mt-8"
-                >
-                  {image.imageStyle === 'portrait' && (
-                    <Image
-                      src={urlForImage(image)}
-                      alt={image.alt ? image.alt : ''}
-                      layout="fill"
-                      objectFit="contain"
-                      placeholder="blur"
-                      blurDataURL={urlForImageBlur(image)}
-                    />
-                  )}
-                  {(image.imageStyle === 'fullWidth' || !image.imageStyle) && (
-                    <>
+          data.images
+            .filter((image: any) => !image._upload)
+            .map((image: any) => {
+              return (
+                <>
+                  <div
+                    key={image._key}
+                    className="relative mt-4 flex  aspect-square w-full justify-center md:mt-8"
+                  >
+                    {image.imageStyle === 'portrait' && (
                       <Image
                         src={urlForImage(image)}
                         alt={image.alt ? image.alt : ''}
                         layout="fill"
-                        objectFit="cover"
+                        objectFit="contain"
                         placeholder="blur"
                         blurDataURL={urlForImageBlur(image)}
                       />
-                    </>
-                  )}
-                </div>
-                {image.credit && (
-                  <p
-                    className={composeClassNames(
-                      'pr-2 text-xs md:mt-1 md:pr-4 md:text-sm',
-                      {
-                        'text-center': image.imageStyle === 'portrait',
-                        'text-right': image.imageStyle === 'fullWidth',
-                      }
                     )}
-                  >
-                    {image.credit}
-                  </p>
-                )}
-              </>
-            );
-          })}
+                    {(image.imageStyle === 'fullWidth' ||
+                      !image.imageStyle) && (
+                      <>
+                        <Image
+                          src={urlForImage(image)}
+                          alt={image.alt ? image.alt : ''}
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={urlForImageBlur(image)}
+                        />
+                      </>
+                    )}
+                  </div>
+                  {image.credit && (
+                    <p
+                      className={composeClassNames(
+                        'pr-2 text-xs md:mt-1 md:pr-4 md:text-sm',
+                        {
+                          'text-center': image.imageStyle === 'portrait',
+                          'text-right': image.imageStyle === 'fullWidth',
+                        }
+                      )}
+                    >
+                      {image.credit}
+                    </p>
+                  )}
+                </>
+              );
+            })}
       </div>
     </div>
   );

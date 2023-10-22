@@ -33,7 +33,7 @@ export default function Footer({
         />
       </ul>
       <a
-        href="https://www.paypal.com/donate?hosted_button_id=ZQZQYQZQZQZQZ"
+        href="https://www.paypal.com/fundraiser/charity/1501452"
         target="_blank"
         className="fixed bottom-3 right-4 z-20"
       >

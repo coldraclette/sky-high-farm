@@ -44,7 +44,8 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   useEffect(() => {
     getPageSettings().then((pageSettings) => {
       if (pageSettings.menuColor) {
-        const rgbaColor = hexToRgba(pageSettings.menuColor, 0.8);
+        console.log('pageSettings.menuColor', pageSettings.menuColor);
+        const rgbaColor = hexToRgba(pageSettings.menuColor.value, 0.8);
         setOverlayColor(rgbaColor);
       }
     });

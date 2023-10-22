@@ -2,7 +2,6 @@ import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
-import { composeClassNames } from '../../utils';
 
 interface ProgrammingProjectItemProps {
   project: {
@@ -62,7 +61,7 @@ export default function ProgrammingProjectItem({
       </div>
       <h3 className="md:text-xl lg:text-3xl">{project.title}</h3>
       {project.subtitleGreen && (
-        <h4 className={composeClassNames('md:text-xl lg:text-3xl')}>
+        <h4 className="text-green md:text-xl lg:text-3xl">
           {project.subtitleGreen}
         </h4>
       )}

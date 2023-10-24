@@ -3,6 +3,7 @@ import {
   getVolunteerPageData,
   getVolunteerPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import Footer from '../../components/Navigation/Footer';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
@@ -41,9 +42,12 @@ export async function generateMetadata() {
 export default async function Page() {
   const data = await getVolunteerPageData();
   return (
-    <div className="px-5 md:px-6">
-      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      <TextContent text={data.textContent} greenTitles={true} />
+    <div className='flex h-full flex-col justify-between'>
+      <div className="px-5 md:px-6">
+        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+        <TextContent text={data.textContent} greenTitles={true} />
+      </div>
+      <Footer />
     </div>
   );
 }

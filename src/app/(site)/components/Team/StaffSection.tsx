@@ -30,7 +30,7 @@ export default function StaffSection({
           {staff.members.map((member: any, index: number) => {
             return (
               <StaffMembers
-                key={member.name + index}
+                key={member._id}
                 member={member}
                 type={type}
               />

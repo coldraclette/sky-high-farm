@@ -3,6 +3,7 @@ import {
   getTeamPageData,
   getTeamPageMetaData,
 } from '../../../../../sanity/sanity.query';
+import Footer from '../../components/Navigation/Footer';
 import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 
@@ -42,18 +43,21 @@ export default async function Page() {
   const columns = data?.showFourColumns ? 4 : 3;
 
   return (
-    <div className="px-5 md:px-6">
-      {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-      {data.staffSections.map((staff: any) => {
-        return (
-          <StaffSection
-            key={staff._key}
-            staff={staff}
-            type={'team'}
-            columns={columns}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className="px-5 md:px-6">
+        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+        {data.staffSections.map((staff: any) => {
+          return (
+            <StaffSection
+              key={staff._key}
+              staff={staff}
+              type={'team'}
+              columns={columns}
+            />
+          );
+        })}
+      </div>
+      <Footer />
+    </>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { getPageSettings } from '../../../../../sanity/sanity.query';
+import { composeClassNames } from '../../utils';
 import MenuItem from './MenuItem';
 
 interface MenuProps {
@@ -44,8 +45,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   useEffect(() => {
     getPageSettings().then((pageSettings) => {
       if (pageSettings.menuColor) {
-        console.log('pageSettings.menuColor', pageSettings.menuColor);
-        const rgbaColor = hexToRgba(pageSettings.menuColor.value, 0.8);
+        const rgbaColor = hexToRgba(pageSettings.menuColor.value, 0.85);
         setOverlayColor(rgbaColor);
       }
     });
@@ -56,9 +56,19 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
     <>
       <nav
         ref={menuRef}
-        className={`blend-difference fixed left-0 top-0 z-30 mt-4 w-full pl-5 text-[25px] md:pl-6 md:text-3xl ${color}`}
+        className={composeClassNames(
+          `fixed left-0 top-0 z-30 mt-4 w-full pl-5 text-[25px] md:pl-6 md:text-3xl ${color}`,
+          {
+            'blend-difference': !isOpen,
+          }
+        )}
       >
-        <button onClick={() => setIsOpen(!isOpen)}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={composeClassNames('blend-difference', {
+            'text-white': isOpen,
+          })}
+        >
           {isOpen ? 'X' : 'Menu'}
         </button>
 

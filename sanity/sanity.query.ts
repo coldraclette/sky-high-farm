@@ -45,8 +45,10 @@ export async function getTeamPageData() {
     pageTitle,
     showFourColumns,
     staffSections[]{
+      _key,
       sectionTitle,
       members[]->{
+        _id,
         name,
         jobTitle,
         image,
@@ -193,8 +195,10 @@ export async function getGrantsPageData() {
     textContent,
     showFourColumns,
     grantSections[]{
+      _key,
       sectionTitle,
       members[]->{
+        _id,
         name,
         jobTitle,
         image,
@@ -213,6 +217,7 @@ export async function getFoodAccessPageData() {
     textContent,
     showFourColumns,
     organizations[]->{
+      _id,
       name,
       image,
       slug { current },
@@ -228,8 +233,10 @@ export async function getFellowshipPageData() {
     textContent,
     showFourColumns,
     fellowSections[]{
+      _key,
       sectionTitle,
       members[]->{
+        _id,
         name,
         jobTitle,
         image,

@@ -73,7 +73,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
         </button>
 
         {isOpen && (
-          <ul className="z-30 mt-2 space-y-2">
+          <ul className="z-30 mt-2 space-y-2 text-white">
             <MenuItem
               path="/food-access"
               title="Food Access"

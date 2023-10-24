@@ -59,14 +59,14 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
         className={composeClassNames(
           `fixed left-0 top-0 z-30 mt-4 w-full pl-5 text-[25px] md:pl-6 md:text-3xl ${color}`,
           {
-            'blend-difference': !isOpen,
+            '': !isOpen || !isLandingPage,
           }
         )}
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={composeClassNames('blend-difference', {
-            'text-white': isOpen,
+          className={composeClassNames('', {
+            'text-white': isOpen || isLandingPage,
           })}
         >
           {isOpen ? 'X' : 'Menu'}

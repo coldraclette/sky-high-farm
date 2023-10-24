@@ -6,6 +6,8 @@ import {
   getFellowshipPageMetaData,
 } from '../../../../../sanity/sanity.query';
 import Footer from '../../components/Navigation/Footer';
+import Logo from '../../components/Navigation/Logo';
+import Menu from '../../components/Navigation/Menu';
 import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 import TextContent from '../../components/TextContent';
@@ -52,6 +54,10 @@ export default async function Page() {
 
   return (
     <>
+      <header>
+        <Menu />
+        <Logo />
+      </header>
       <div className="px-5 md:px-6">
         {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
         <TextContent text={data.textContent} />

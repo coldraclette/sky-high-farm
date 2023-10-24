@@ -8,6 +8,8 @@ import {
   getPageSettings,
 } from '../../../../../sanity/sanity.query';
 import Footer from '../../components/Navigation/Footer';
+import Logo from '../../components/Navigation/Logo';
+import Menu from '../../components/Navigation/Menu';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 import { composeClassNames } from '../../utils';
@@ -54,6 +56,10 @@ export default async function Page() {
 
   return (
     <>
+      <header>
+        <Menu />
+        <Logo />
+      </header>
       <div className="px-5 md:px-6">
         {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
         <TextContent text={data.textContent} />

@@ -7,6 +7,8 @@ import {
 } from '../../../../../sanity/sanity.query';
 import BackgroundImage from '../../components/Images/BackgroundImage';
 import Footer from '../../components/Navigation/Footer';
+import Logo from '../../components/Navigation/Logo';
+import Menu from '../../components/Navigation/Menu';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
@@ -46,26 +48,38 @@ export default async function Page() {
 
   if (data.backgroundImage && data.backgroundImage.asset) {
     return (
-      <div className="flex h-full flex-col justify-between">
-        <div className="relative z-10 px-5 md:px-6">
-          {data.showPageTitle && (
-            <PageTitle pageTitle={data.pageTitle} color="text-white" />
-          )}
-          <TextContent text={data.textContent} color="text-white" />
+      <>
+        <header>
+          <Menu color="text-white" />
+          <Logo />
+        </header>
+        <div className="flex h-full flex-col justify-between">
+          <div className="relative z-10 px-5 md:px-6">
+            {data.showPageTitle && (
+              <PageTitle pageTitle={data.pageTitle} color="text-white" />
+            )}
+            <TextContent text={data.textContent} color="text-white" />
+          </div>
+          <BackgroundImage backgroundImage={data.backgroundImage} />
+          <Footer textColor="text-white" />
         </div>
-        <BackgroundImage backgroundImage={data.backgroundImage} />
-        <Footer textColor="text-white" />
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="flex h-full flex-col justify-between">
-      <div className="relative px-5 md:px-6">
-        {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
-        <TextContent text={data.textContent} />
+    <>
+      <header>
+        <Menu />
+        <Logo />
+      </header>
+      <div className="flex h-full flex-col justify-between">
+        <div className="relative px-5 md:px-6">
+          {data.showPageTitle && <PageTitle pageTitle={data.pageTitle} />}
+          <TextContent text={data.textContent} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }

@@ -22,6 +22,7 @@ export const teamMember = {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: "If a slug isn't provided, there won't be a detail page",
       group: 'teamMemberGroup',
       options: {
         source: 'name',

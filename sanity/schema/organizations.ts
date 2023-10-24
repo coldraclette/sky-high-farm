@@ -13,6 +13,7 @@ export const organizations = {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: "If a slug isn't provided, there won't be a detail page",
       options: {
         source: 'name',
         maxLength: 96,

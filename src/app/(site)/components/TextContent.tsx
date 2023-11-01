@@ -73,6 +73,7 @@ export default function TextContent({
       iframeEmbed: ({ value }: any) => (
         <div className='my-4 md:my-8'>
           <iframe
+          className='w-full'
             src={value.url}
             width={value.width || '100%'}
             height={value.height || '500'}

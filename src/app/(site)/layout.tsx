@@ -1,5 +1,6 @@
 import { urlForImage } from '../../../sanity/lib/image';
 import { getLandingPageMetaData } from '../../../sanity/sanity.query';
+import GoogleTag from './components/GoogleTag';
 
 import './globals.css';
 
@@ -60,6 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={monumentGrotesk.variable}>
+      <GoogleTag trackingId="G-2HJLYLJHD4" />
       <body className="h-full w-full">{children}</body>
     </html>
   );

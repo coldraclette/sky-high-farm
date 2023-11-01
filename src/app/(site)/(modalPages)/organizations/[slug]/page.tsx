@@ -21,7 +21,7 @@ export default async function Page({ params }: Props) {
   if (!data) {
     return null;
   }
-
+  
   return (
     <div>
       <ModalHeading
@@ -31,7 +31,7 @@ export default async function Page({ params }: Props) {
         content={data.text}
       />
 
-      {data?.image && (
+      {data.showImage && data?.image && (
         <div className="relative m-auto mt-8 flex h-60 w-60 justify-center">
           <Image
             src={

@@ -29,7 +29,7 @@ export default async function Page({ params }: Props) {
         path="/grants"
         title={data.name}
         info={data.jobTitle}
-        content={data.text}
+        content={data.bio}
       />
 
       {data?.image && data?.image?.asset && (

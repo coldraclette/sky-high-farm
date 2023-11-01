@@ -252,6 +252,7 @@ export async function getSingleOrganizationData(slug: string) {
     orgInfo,
     image,
     text,
+    showImage
   }`);
 }
 

@@ -18,7 +18,7 @@ export default function Footer({
   const isMobile = windowSize.width ? windowSize.width < 770 : false; // 1024
   return (
     <footer
-      className={`flex items-end justify-between p-4 md:text-xl ${textColor} ${
+      className={`flex items-end justify-between p-4 md:text-xl z-10 ${textColor} ${
         fixed ? 'fixed bottom-0 w-full' : 'relative'
       }`}
     >

@@ -44,7 +44,7 @@ export const contactPage = {
       description: 'Add some text to the contact page. You can use links.',
       type: 'array',
       group: 'contactPageGroup',
-      of: [{ type: 'block' }],
+      of: [{ type: 'block' }, { type: 'iframeEmbed' }],
     },
     {
       name: 'seoTitle',

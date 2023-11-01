@@ -8,13 +8,17 @@ interface TextContentProps {
   greenTitles?: boolean;
 }
 
+interface customComponents extends PortableTextComponents {
+  types: any;
+}
+
 export default function TextContent({
   text,
   textSize = 'text-size-1 md:leading-[39.6px] md:tracking-[0.36px]',
   color = '',
   greenTitles = false,
 }: TextContentProps) {
-  const components: PortableTextComponents = {
+  const components: customComponents = {
     block: {
       normal: ({ children }) => (
         <p
@@ -63,6 +67,19 @@ export default function TextContent({
       },
       strong: ({ children }) => (
         <strong className={`${greenTitles && 'text-green'}`}>{children}</strong>
+      ),
+    },
+    types: {
+      iframeEmbed: ({ value }: any) => (
+        <div className='my-4 md:my-8'>
+          <iframe
+            src={value.url}
+            width={value.width || '100%'}
+            height={value.height || '500'}
+          >
+            Loading…
+          </iframe>
+        </div>
       ),
     },
   };

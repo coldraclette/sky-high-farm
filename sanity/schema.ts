@@ -18,6 +18,7 @@ import { supportPage } from './schema/support-page';
 import { teamMember } from './schema/team-member';
 import { teamPage } from './schema/team-page';
 import { volunteerPage } from './schema/volunteer-page';
+import { iframeEmbed } from './schema/iframe';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -39,5 +40,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     fellow,
     grant,
     settings,
+    iframeEmbed
   ],
 };

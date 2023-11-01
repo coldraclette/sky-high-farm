@@ -74,6 +74,11 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
 
         {isOpen && (
           <ul className="z-30 mt-2 space-y-2 text-white">
+           <MenuItem
+              path="/about"
+              title="About"
+              onItemClick={handleMenuItemClicked}
+            />
             <MenuItem
               path="/food-access"
               title="Food Access"
@@ -95,23 +100,18 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
               onItemClick={handleMenuItemClicked}
             />
             <MenuItem
-              path="/about"
-              title="About"
-              onItemClick={handleMenuItemClicked}
-            />
-            <MenuItem
               path="/team"
               title="Team"
+              onItemClick={handleMenuItemClicked}
+            />
+             <MenuItem
+              path="/jobs"
+              title="Jobs"
               onItemClick={handleMenuItemClicked}
             />
             <MenuItem
               path="/volunteer"
               title="Volunteer"
-              onItemClick={handleMenuItemClicked}
-            />
-            <MenuItem
-              path="/jobs"
-              title="Jobs"
               onItemClick={handleMenuItemClicked}
             />
             <MenuItem

@@ -58,5 +58,11 @@ export const organizations = {
         },
       ],
     },
+    {
+      name: 'showImage',
+      title: 'Show Image',
+      type: 'boolean',
+      description: "Show the image on the organization's detail page.",
+    },
   ],
 };

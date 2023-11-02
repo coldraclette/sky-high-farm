@@ -17,9 +17,10 @@ export const VideoPlayer = ({ video }: VideoPlayerProps) => {
     <video
       className="absolute top-0 h-screen w-screen object-cover"
       preload="auto"
-      autoPlay
-      muted
-      loop
+      autoPlay={true}
+      muted={true}
+      loop={true}
+      playsInline
     >
       <source src={returnVideoUrl(video) + '#t=000.1'} type="video/mp4" />
     </video>

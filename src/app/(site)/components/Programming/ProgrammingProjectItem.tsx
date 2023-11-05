@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
@@ -27,7 +27,7 @@ export default function ProgrammingProjectItem({
       year: 'numeric',
     });
   }
-
+  
   return (
     <Link
       href={`/programming/${project.slug.current}`}
@@ -43,12 +43,12 @@ export default function ProgrammingProjectItem({
           }
           alt={project.projectImage?.alt ? project.projectImage?.alt : ''}
           placeholder="blur"
-          layout="fill"
-          objectFit="cover"
-          className="h-full w-full transition-opacity duration-300 hover:opacity-40"
+          fill
+          sizes="(min-width: 1280px) calc(25vw - 30px), (min-width: 1040px) calc(33.18vw - 30px), (min-width: 780px) calc(50vw - 36px), calc(100vw - 40px)"
+          className="h-full w-full object-cover transition-opacity duration-300 hover:opacity-40"
           blurDataURL={
             project.projectImage
-              ? urlForImageBlur(project.projectImage)
+              ? project.projectImage?.metadata?.lqip
               : '/skyhighfarm-logo.png'
           }
         />

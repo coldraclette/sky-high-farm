@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 
@@ -17,10 +17,11 @@ export default function BackgroundImage({
           quality={80}
           alt={backgroundImage.alt}
           src={urlForImage(backgroundImage)}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
+          className="bg-center object-cover"
           placeholder="blur"
-          blurDataURL={urlForImageBlur(backgroundImage)}
+          blurDataURL={backgroundImage.asset.metadata.lqip}
         />
       </div>
     </>

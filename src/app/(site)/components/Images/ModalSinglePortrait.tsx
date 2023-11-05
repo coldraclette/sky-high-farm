@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 
@@ -11,17 +11,16 @@ export default function ModalSinglePortrait({
 }: ModalSinglePortraitProps) {
   return (
     <>
-      <div className="relative mt-8 flex justify-center">
+      <div className="relative mx-auto mt-8 flex h-[500px] max-w-[1200px] justify-center md:h-[800px]">
         <Image
-          src={image?.asset ? urlForImage(image) : '/skyhighfarm-logo.png'}
+          src={image ? urlForImage(image) : '/skyhighfarm-logo.png'}
           alt={image?.alt ? image.alt : ''}
           placeholder="blur"
-          objectFit="cover"
-          height={1200}
-          width={800}
-          blurDataURL={
-            image?.asset ? urlForImageBlur(image) : '/skyhighfarm-logo.png'
-          }
+          fill
+          quality={80}
+          className="object-cover md:object-contain"
+          sizes="(min-width: 1280px) 1200px, calc(93.75vw + 19px)"
+          blurDataURL={image ? image.metadata.lqip : '/skyhighfarm-logo.png'}
         />
       </div>
       <p className="my-1 text-center">{image.credit}</p>

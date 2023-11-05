@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
@@ -79,20 +79,20 @@ export default async function Page() {
                   <Image
                     quality={80}
                     src={
-                      org?.image?.asset
+                      org?.image
                         ? urlForImage(org?.image)
                         : '/skyhighfarm-logo.png'
                     }
-                    layout="fill"
+                    fill
                     alt={org?.alt ? org.alt : ''}
                     placeholder="blur"
-                    objectFit="contain"
+                    sizes="(min-width: 1280px) calc(25vw - 30px), (min-width: 1040px) calc(33.18vw - 30px), (min-width: 780px) calc(50vw - 36px), calc(100vw - 40px)"
                     blurDataURL={
-                      org?.image?.asset
-                        ? urlForImageBlur(org?.image)
+                      org?.image
+                        ? org?.image?.metadata?.lqip
                         : '/skyhighfarm-logo.png'
                     }
-                    className="transition-opacity duration-300 hover:opacity-70"
+                    className="object-contain transition-opacity duration-300 hover:opacity-70"
                   />
                 </div>
 

@@ -17,7 +17,7 @@ export default async function Page({ params }: Props) {
   if (!data) {
     return null;
   }
-  
+
   return (
     <div>
       <ModalHeading
@@ -27,9 +27,7 @@ export default async function Page({ params }: Props) {
         content={data.bio}
       />
 
-      {data?.image && data?.image?.asset && (
-        <ModalSinglePortrait image={data.image} />
-      )}
+      {data?.image && <ModalSinglePortrait image={data.image} />}
     </div>
   );
 }

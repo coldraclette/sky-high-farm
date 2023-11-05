@@ -1,11 +1,7 @@
-import Image from 'next/legacy/image';
 import ModalSinglePortrait from '@/app/(site)/components/Images/ModalSinglePortrait';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 
-import {
-  urlForImage,
-  urlForImageBlur,
-} from '../../../../../../sanity/lib/image';
+import { urlForImage } from '../../../../../../sanity/lib/image';
 import {
   getTeamMemberData,
   getTeamMemberMetaData,
@@ -66,9 +62,7 @@ export default async function Page({ params }: Props) {
         content={data.bio}
       />
 
-      {data?.image && data?.image?.asset && (
-        <ModalSinglePortrait image={data.image} />
-      )}
+      {data?.image && <ModalSinglePortrait image={data.image} />}
     </div>
   );
 }

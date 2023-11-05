@@ -1,7 +1,5 @@
-import Image from 'next/legacy/image';
 import Link from 'next/link';
 
-import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 import TeamPortrait from '../Images/TeamPortrait';
 
 interface StaffMembersProps {

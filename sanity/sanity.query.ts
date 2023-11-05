@@ -10,7 +10,13 @@ export async function getLandingPageData() {
 
 export async function getProgrammingPageData() {
   return client.fetch(groq`*[_type == "programmingPage"][0]{
-    headerImage,
+    "headerImage": headerImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     pageTitle,
     titlePosition,
     textContent,
@@ -30,11 +36,31 @@ export async function getNumberOfSpecialProjects() {
 
 export async function getAboutPageData() {
   return client.fetch(groq`*[_type == "aboutPage"][0]{
-    headerImage,
+    "headerImage": headerImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     pageTitle,
     titlePosition,
     textContent,
-    timeline,
+    "timeline": timeline{
+      timelineTitle,
+      "timelineItems": timelineItems[]{
+        _key,
+        year,
+        description,
+        "image": image.asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        }
+      }
+    },
     endTextBlock
   }`);
 }
@@ -51,7 +77,13 @@ export async function getTeamPageData() {
         _id,
         name,
         jobTitle,
-        image,
+        "image": image.asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        },
         slug { current }
       }
     }
@@ -62,7 +94,13 @@ export async function getTeamMemberData(slug: string) {
   return client.fetch(groq`*[_type == "teamMember" && slug.current == "${slug}"][0]{
     name,
     jobTitle,
-    image,
+    "image": image.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     bio
   }`);
 }
@@ -72,7 +110,13 @@ export async function getFirstProgrammingProjects(columns: number) {
     columns * 2 - 1
   }]{
     title,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     subtitleGreen,
     date,
     flexibleDate,
@@ -88,7 +132,13 @@ export async function getNextProgrammingProjects(
     startIndex + columns * 2 - 1
   }]{    
     title,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     subtitleGreen,
     date,
     flexibleDate,
@@ -101,7 +151,13 @@ export async function getFirstSpecialProjects(columns: number) {
     columns * 2 - 1
   }]{
     title,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     subtitleGreen,
     date,
     flexibleDate,
@@ -117,7 +173,13 @@ export async function getNextSpecialProjects(
     startIndex + columns * 2 - 1
   }]{
     title,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     subtitleGreen,
     date,
     flexibleDate,
@@ -129,11 +191,28 @@ export async function getProgrammingProject(slug: string) {
   return client.fetch(groq`*[_type == "programmingProject" && slug.current == "${slug}"][0]{
     title,
     slug,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     date,
     projectInfo,
     textContent,
-    images
+    "images": images[]{
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+      "imageStyle": imageStyle,
+      "alt": alt,
+      "credit": credit
+    }
   }`);
 }
 
@@ -141,11 +220,28 @@ export async function getSpecialProject(slug: string) {
   return client.fetch(groq`*[_type == "specialProject" && slug.current == "${slug}"][0]{
     title,
     slug,
-    projectImage,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     date,
     projectInfo,
     textContent,
-    images
+    "images": images[]{
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+      "imageStyle": imageStyle,
+      "alt": alt,
+      "credit": credit
+    }
   }`);
 }
 
@@ -154,7 +250,16 @@ export async function getSupportPageData() {
     textContent,
     link,
     donateButtonImage,
-    backgroundImage
+    backgroundImage {
+      alt,
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+    },
   }`);
 }
 
@@ -162,7 +267,16 @@ export async function getJobPageData() {
   return client.fetch(groq`*[_type == "jobPage"][0]{
     showPageTitle,
     pageTitle,
-    backgroundImage,
+    backgroundImage {
+      alt,
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+    },
     noJobOpeningsText,
     jobOpeningsText,
     singUpText,
@@ -174,7 +288,16 @@ export async function getContactPageData() {
   return client.fetch(groq`*[_type == "contactPage"][0]{
     showPageTitle,
     pageTitle,
-    backgroundImage,
+    backgroundImage {
+      alt,
+      asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+    },
     textContent
   }`);
 }
@@ -201,7 +324,13 @@ export async function getGrantsPageData() {
         _id,
         name,
         jobTitle,
-        image,
+        "image": image.asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        },
         slug { current }
       }
     }
@@ -219,7 +348,13 @@ export async function getFoodAccessPageData() {
     organizations[]->{
       _id,
       name,
-      image,
+      "image": image.asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
       slug { current },
     }
   }`
@@ -239,7 +374,13 @@ export async function getFellowshipPageData() {
         _id,
         name,
         jobTitle,
-        image,
+        "image": image.asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        },
         slug { current }
       }
     }
@@ -250,7 +391,13 @@ export async function getSingleOrganizationData(slug: string) {
   return client.fetch(groq`*[_type == "organizations" && slug.current == "${slug}"][0]{
     name,
     orgInfo,
-    image,
+    "image": image.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
     text,
     showImage
   }`);
@@ -261,7 +408,13 @@ export async function getSingleGrantsData(slug: string) {
     name,
     jobTitle,
     bio,
-    image,
+    "image" : image.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
   }`);
 }
 
@@ -270,7 +423,13 @@ export async function getSingleFellowshipData(slug: string) {
     name,
     jobTitle,
     bio,
-    image,
+    "image" : image.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
   }`);
 }
 

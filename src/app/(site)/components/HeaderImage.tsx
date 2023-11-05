@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../sanity/lib/image';
 
@@ -22,10 +22,11 @@ export default function HeaderImage({
         src={urlForImage(image)}
         alt={alt ? alt : ''}
         priority
-        layout="fill"
+        fill
+        sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
         className="object-cover"
         placeholder="blur"
-        blurDataURL={urlForImageBlur(image)}
+        blurDataURL={image.metadata.lqip}
       />
       {titlePosition === 'middle' && (
         <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-4xl font-bold text-white">

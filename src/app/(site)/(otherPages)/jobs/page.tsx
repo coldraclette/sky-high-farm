@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 import {
@@ -91,10 +91,10 @@ export default async function Page() {
               quality={80}
               alt={data.backgroundImage.alt}
               src={urlForImage(data.backgroundImage)}
-              layout="fill"
-              objectFit="cover"
+              fill
+              className='object-cover'
               placeholder="blur"
-              blurDataURL={urlForImageBlur(data.backgroundImage)}
+              blurDataURL={data.backgroundImage.asset.metadata.lqip}
             />
           </div>
           <Footer textColor="text-white" />

@@ -1,6 +1,4 @@
-import Image from 'next/legacy/image';
-
-import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
+import { urlForImage } from '../../../../../sanity/lib/image';
 import {
   getContactPageData,
   getContactPageMetaData,
@@ -46,7 +44,7 @@ export async function generateMetadata() {
 export default async function Page() {
   const data = await getContactPageData();
 
-  if (data.backgroundImage && data.backgroundImage.asset) {
+  if (data.backgroundImage) {
     return (
       <>
         <header>

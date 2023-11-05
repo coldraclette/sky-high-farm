@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 import NotFound from '@/app/(site)/not-found';
 import { composeClassNames } from '@/app/(site)/utils';
@@ -98,15 +98,16 @@ export default async function Page({ params }: Props) {
       />
       {data.projectImage && (
         <>
-          <div className="relative mt-8 flex aspect-square w-full justify-center">
+          <div className="relative mx-auto mt-8 flex aspect-square w-full justify-center">
             <Image
               quality={80}
               src={urlForImage(data.projectImage)}
               alt={data.projectImage.alt ? data.projectImage.alt : ''}
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
               placeholder="blur"
-              blurDataURL={urlForImageBlur(data.projectImage)}
+              blurDataURL={data.projectImage.metadata.lqip}
+              className="object-cover"
             />
           </div>
           {data.projectImage.credit && (
@@ -132,10 +133,11 @@ export default async function Page({ params }: Props) {
                         quality={80}
                         src={urlForImage(image)}
                         alt={image.alt ? image.alt : ''}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
+                        className="1 object-contain"
                         placeholder="blur"
-                        blurDataURL={urlForImageBlur(image)}
+                        blurDataURL={image.asset.metadata.lqip}
                       />
                     )}
                     {(image.imageStyle === 'fullWidth' ||
@@ -145,10 +147,11 @@ export default async function Page({ params }: Props) {
                           quality={80}
                           src={urlForImage(image)}
                           alt={image.alt ? image.alt : ''}
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
+                          className="2 object-cover"
                           placeholder="blur"
-                          blurDataURL={urlForImageBlur(image)}
+                          blurDataURL={image.asset.metadata.lqip}
                         />
                       </>
                     )}

@@ -1,11 +1,6 @@
-import Image from 'next/legacy/image';
 import ModalSinglePortrait from '@/app/(site)/components/Images/ModalSinglePortrait';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 
-import {
-  urlForImage,
-  urlForImageBlur,
-} from '../../../../../../sanity/lib/image';
 import { getSingleGrantsData } from '../../../../../../sanity/sanity.query';
 
 interface Props {
@@ -32,7 +27,7 @@ export default async function Page({ params }: Props) {
         content={data.bio}
       />
 
-      {data?.image && data?.image?.asset && (
+      {data?.image && (
         <ModalSinglePortrait image={data.image} />
       )}
     </div>

@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 
 import {
@@ -21,7 +21,7 @@ export default async function Page({ params }: Props) {
   if (!data) {
     return null;
   }
-  
+
   return (
     <div>
       <ModalHeading
@@ -35,19 +35,17 @@ export default async function Page({ params }: Props) {
         <div className="relative m-auto mt-8 flex h-60 w-60 justify-center">
           <Image
             src={
-              data?.image?.asset
-                ? urlForImage(data?.image)
-                : '/skyhighfarm-logo.png'
+              data?.image ? urlForImage(data?.image) : '/skyhighfarm-logo.png'
             }
             alt={data?.alt ? data?.alt : ''}
             placeholder="blur"
-            objectFit="contain"
+            className="object-contain"
             height={1200}
             width={800}
             quality={80}
             blurDataURL={
-              data?.image?.asset
-                ? urlForImageBlur(data?.image)
+              data?.image
+                ? data.image.asset.metadata.lqip
                 : '/skyhighfarm-logo.png'
             }
           />

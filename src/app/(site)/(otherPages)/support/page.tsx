@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
@@ -67,8 +67,9 @@ export default async function Page() {
                     quality={80}
                     src={urlForImage(data.donateButtonImage)}
                     alt={data.donateButtonImage.alt}
-                    layout="fill"
-                    objectFit="contain"
+                    width={250}
+                    height={100}
+                    className="object-contain"
                   />
                 </div>
               </Link>
@@ -101,6 +102,7 @@ export default async function Page() {
                     alt={data.donateButtonImage.alt}
                     width={250}
                     height={100}
+                    className="object-contain"
                   />
                 </div>
               </Link>

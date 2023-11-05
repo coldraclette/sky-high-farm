@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 
@@ -25,19 +25,14 @@ export default function TimelineItem({ item }: TimelineItemProps) {
       <div className="relative mt-2 aspect-square w-full md:mt-0">
         <Image
           quality={80}
-          src={
-            item?.image?.asset
-              ? urlForImage(item.image)
-              : '/skyhighfarm-logo.png'
-          }
+          src={item?.image ? urlForImage(item.image) : '/skyhighfarm-logo.png'}
           alt={item?.image?.alt ? item.image.alt : ''}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
+          sizes="(min-width: 780px) calc(33.33vw - 16px), calc(100vw - 40px)"
           placeholder="blur"
           blurDataURL={
-            item?.image?.asset
-              ? urlForImageBlur(item?.image)
-              : '/skyhighfarm-logo.png'
+            item?.image ? item?.image?.metadata?.lqip : '/skyhighfarm-logo.png'
           }
         />
       </div>

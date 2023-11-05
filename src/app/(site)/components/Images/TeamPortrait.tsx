@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import { urlForImage, urlForImageBlur } from '../../../../../sanity/lib/image';
 
@@ -31,15 +31,13 @@ export default function TeamPortrait({
       <div className="relative mt-2 aspect-square w-full md:mt-0">
         <Image
           quality={80}
-          src={image?.asset ? urlForImage(image) : '/skyhighfarm-logo.png'}
-          layout="fill"
+          src={image ? urlForImage(image) : '/skyhighfarm-logo.png'}
+          fill
           alt={alt ? alt : ''}
           placeholder="blur"
-          objectFit="cover"
-          blurDataURL={
-            image?.asset ? urlForImageBlur(image) : '/skyhighfarm-logo.png'
-          }
-          className={`transition-opacity duration-300 hover:opacity-70 ${adjustMobilePosition(
+          sizes="(min-width: 1280px) calc(25vw - 30px), (min-width: 1040px) calc(33.18vw - 30px), (min-width: 780px) calc(50vw - 36px), calc(100vw - 40px)"
+          blurDataURL={image ? image.metadata.lqip : '/skyhighfarm-logo.png'}
+          className={`object-cover transition-opacity duration-300 hover:opacity-70 ${adjustMobilePosition(
             image
           )}`}
         />

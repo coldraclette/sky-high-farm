@@ -13,7 +13,6 @@ interface MenuProps {
 
 export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [overlayColor, setOverlayColor] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -32,24 +31,6 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen]);
-
-  function hexToRgba(hex: string, alpha: number = 1) {
-    const hexWithoutHash = hex.replace('#', '');
-    const r = parseInt(hexWithoutHash.substring(0, 2), 16);
-    const g = parseInt(hexWithoutHash.substring(2, 4), 16);
-    const b = parseInt(hexWithoutHash.substring(4, 6), 16);
-
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
-
-  useEffect(() => {
-    getPageSettings().then((pageSettings) => {
-      if (pageSettings.menuColor) {
-        const rgbaColor = hexToRgba(pageSettings.menuColor.value, 0.85);
-        setOverlayColor(rgbaColor);
-      }
-    });
-  }, []);
 
   const handleMenuItemClicked = () => setIsOpen(false);
   return (
@@ -74,7 +55,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
 
         {isOpen && (
           <ul className="z-30 mt-2 space-y-2 text-white">
-           <MenuItem
+            <MenuItem
               path="/about"
               title="About"
               onItemClick={handleMenuItemClicked}
@@ -104,7 +85,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
               title="Team"
               onItemClick={handleMenuItemClicked}
             />
-             <MenuItem
+            <MenuItem
               path="/jobs"
               title="Jobs"
               onItemClick={handleMenuItemClicked}
@@ -135,9 +116,10 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
             left: 0,
             width: '100%',
             height: '100%',
-            background: overlayColor
-              ? overlayColor
-              : 'rgba(255, 255, 255, 0.8)',
+            background: 'rgba(112,191,233, 0.85)',
+            // background: overlayColor
+            //   ? overlayColor
+            //   : 'rgba(255, 255, 255, 0.8)',
             zIndex: 20,
           }}
         />

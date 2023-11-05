@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export default async function Page({ params }: Props) {
   const data = await getSingleGrantsData(params.slug);

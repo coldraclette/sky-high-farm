@@ -14,7 +14,7 @@ import ProgrammingProjects from '../../components/Programming/ProgrammingProject
 import SpecialProjects from '../../components/Programming/SpecialProjects';
 import TextContent from '../../components/TextContent';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =

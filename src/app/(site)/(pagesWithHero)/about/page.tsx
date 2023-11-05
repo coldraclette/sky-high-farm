@@ -8,7 +8,7 @@ import HeaderImage from '../../components/HeaderImage';
 import HeaderImageTitleAndAlt from '../../components/HeaderImageTitleAndAlt';
 import TextContent from '../../components/TextContent';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } = await getAboutPageMetaData();

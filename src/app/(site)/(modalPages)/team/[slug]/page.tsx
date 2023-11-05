@@ -17,7 +17,7 @@ interface Props {
   };
 }
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: Props) {
   const { name, seoDescription, image } = await getTeamMemberMetaData(

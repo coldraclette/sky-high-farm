@@ -12,7 +12,7 @@ import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 import TextContent from '../../components/TextContent';
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =

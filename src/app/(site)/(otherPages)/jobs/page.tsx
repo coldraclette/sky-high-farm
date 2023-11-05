@@ -88,6 +88,7 @@ export default async function Page() {
           </div>
           <div className="fixed left-0 top-0 h-screen w-full">
             <Image
+              quality={80}
               alt={data.backgroundImage.alt}
               src={urlForImage(data.backgroundImage)}
               layout="fill"
@@ -118,7 +119,9 @@ export default async function Page() {
                 className="mb-8 grid gap-4 md:mb-16 lg:grid-cols-[1fr_2fr]"
               >
                 <div>
-                  <h2 className="text-size-1 font-bold md:font-normal">{jobOpening.title}</h2>
+                  <h2 className="text-size-1 font-bold md:font-normal">
+                    {jobOpening.title}
+                  </h2>
                   <h3 className="text-size-1 text-green">
                     {jobOpening.additionalInfo}
                   </h3>

@@ -100,6 +100,7 @@ export default async function Page({ params }: Props) {
         <>
           <div className="relative mt-8 flex aspect-square w-full justify-center">
             <Image
+              quality={80}
               src={urlForImage(data.projectImage)}
               alt={data.projectImage.alt ? data.projectImage.alt : ''}
               layout="fill"
@@ -128,6 +129,7 @@ export default async function Page({ params }: Props) {
                   >
                     {image.imageStyle === 'portrait' && (
                       <Image
+                        quality={80}
                         src={urlForImage(image)}
                         alt={image.alt ? image.alt : ''}
                         layout="fill"
@@ -140,6 +142,7 @@ export default async function Page({ params }: Props) {
                       !image.imageStyle) && (
                       <>
                         <Image
+                          quality={80}
                           src={urlForImage(image)}
                           alt={image.alt ? image.alt : ''}
                           layout="fill"

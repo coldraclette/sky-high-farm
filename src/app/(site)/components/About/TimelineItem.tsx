@@ -24,6 +24,7 @@ export default function TimelineItem({ item }: TimelineItemProps) {
       </div>
       <div className="relative mt-2 aspect-square w-full md:mt-0">
         <Image
+          quality={80}
           src={
             item?.image?.asset
               ? urlForImage(item.image)

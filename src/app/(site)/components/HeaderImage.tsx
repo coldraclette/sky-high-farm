@@ -18,6 +18,7 @@ export default function HeaderImage({
   return (
     <div className="relative h-[80vh] w-full overflow-hidden">
       <Image
+        quality={80}
         src={urlForImage(image)}
         alt={alt ? alt : ''}
         priority

@@ -42,7 +42,6 @@ export default async function Page({ params }: Props) {
             className="object-contain"
             height={1200}
             width={800}
-            quality={80}
             blurDataURL={
               data?.image
                 ? data.image.asset.metadata.lqip

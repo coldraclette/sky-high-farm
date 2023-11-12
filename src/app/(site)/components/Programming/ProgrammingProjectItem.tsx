@@ -27,7 +27,7 @@ export default function ProgrammingProjectItem({
       year: 'numeric',
     });
   }
-  
+
   return (
     <Link
       href={`/programming/${project.slug.current}`}
@@ -35,7 +35,6 @@ export default function ProgrammingProjectItem({
     >
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
-          quality={80}
           src={
             project.projectImage
               ? urlForImage(project.projectImage)

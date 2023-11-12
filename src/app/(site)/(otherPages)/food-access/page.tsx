@@ -77,7 +77,6 @@ export default async function Page() {
               <Link key={org._key} href={`/organizations/${org.slug.current}`}>
                 <div className="relative mt-2 aspect-square w-full md:mt-0">
                   <Image
-                    quality={80}
                     src={
                       org?.image
                         ? urlForImage(org?.image)

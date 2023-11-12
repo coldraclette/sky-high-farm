@@ -88,11 +88,10 @@ export default async function Page() {
           </div>
           <div className="fixed left-0 top-0 h-screen w-full">
             <Image
-              quality={80}
               alt={data.backgroundImage.alt}
               src={urlForImage(data.backgroundImage)}
               fill
-              className='object-cover'
+              className="object-cover"
               placeholder="blur"
               blurDataURL={data.backgroundImage.asset.metadata.lqip}
             />

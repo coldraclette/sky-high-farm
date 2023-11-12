@@ -64,7 +64,6 @@ export default async function Page() {
               <Link href={data.link} target="_blank" rel="noreferrer noopener">
                 <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
                   <Image
-                    quality={80}
                     src={urlForImage(data.donateButtonImage)}
                     alt={data.donateButtonImage.alt}
                     width={250}
@@ -97,7 +96,6 @@ export default async function Page() {
               <Link href={data.link} target="_blank" rel="noreferrer noopener">
                 <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
                   <Image
-                    quality={80}
                     src={urlForImage(data.donateButtonImage)}
                     alt={data.donateButtonImage.alt}
                     width={250}

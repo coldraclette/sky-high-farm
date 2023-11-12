@@ -14,7 +14,6 @@ export default function BackgroundImage({
       <div className="fixed left-0 top-0 z-[5] h-screen w-full bg-black/10"></div>
       <div className="fixed left-0 top-0 h-screen w-full">
         <Image
-          quality={80}
           alt={backgroundImage.alt}
           src={urlForImage(backgroundImage)}
           fill

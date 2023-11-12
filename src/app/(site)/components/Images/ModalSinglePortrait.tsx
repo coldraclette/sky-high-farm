@@ -17,7 +17,6 @@ export default function ModalSinglePortrait({
           alt={image?.alt ? image.alt : ''}
           placeholder="blur"
           fill
-          quality={80}
           className="object-cover md:object-contain"
           sizes="(min-width: 1280px) 1200px, calc(93.75vw + 19px)"
           blurDataURL={image ? image.metadata.lqip : '/skyhighfarm-logo.png'}

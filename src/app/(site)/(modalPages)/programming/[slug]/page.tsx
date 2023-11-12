@@ -87,7 +87,6 @@ export default async function Page({ params }: Props) {
   if (!data) {
     return <NotFound />;
   }
-
   return (
     <div>
       <ModalHeading
@@ -122,6 +121,7 @@ export default async function Page({ params }: Props) {
           data.images
             .filter((image: any) => !image._upload)
             .map((image: any) => {
+              if (!image) return null;
               return (
                 <>
                   <div

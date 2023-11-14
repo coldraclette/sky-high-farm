@@ -3,6 +3,7 @@ import ModalHeading from '@/app/(site)/components/ModalHeading';
 
 import { urlForImage } from '../../../../../../sanity/lib/image';
 import {
+  getAllSlugsByType,
   getTeamMemberData,
   getTeamMemberMetaData,
 } from '../../../../../../sanity/sanity.query';
@@ -13,7 +14,18 @@ interface Props {
   };
 }
 
-export const revalidate = 3600;
+export const dynamicParams = true;
+export const revalidate = 86400; // 24 hours
+
+export async function generateStaticParams() {
+  const data = await getAllSlugsByType('teamMember');
+
+  return data
+    .filter((member: any) => member.slug && member.slug.current)
+    .map((member: any) => ({
+      slug: member.slug.current,
+    }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { name, seoDescription, image } = await getTeamMemberMetaData(
@@ -33,7 +45,7 @@ export async function generateMetadata({ params }: Props) {
       siteName: 'skyhighfarm.org',
       images: [
         {
-          url: image ? urlForImage(image) : '/skyhighfarm-logo.png',
+          url: image & image.asset ? urlForImage(image) : '/skyhighfarm-logo.png',
           width: 1200,
           height: 630,
           alt: name,

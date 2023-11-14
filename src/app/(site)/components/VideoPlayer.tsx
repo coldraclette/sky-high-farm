@@ -1,28 +1,30 @@
-import { returnVideoUrl } from '../utils';
+'use client';
 
-interface VideoFile {
-  _type: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-}
+import dynamic from 'next/dynamic';
 
-interface VideoPlayerProps {
-  video: VideoFile;
-}
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
-export const VideoPlayer = ({ video }: VideoPlayerProps) => {
+export const VideoPlayer = () => {
   return (
-    <video
-      className="absolute top-0 h-screen w-screen object-cover"
-      preload="auto"
-      autoPlay={true}
-      muted={true}
-      loop={true}
-      playsInline
-    >
-      <source src={returnVideoUrl(video) + '#t=000.1'} type="video/mp4" />
-    </video>
+    <div className="relative h-screen w-screen overflow-hidden">
+      <ReactPlayer
+        className="react-player absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[5] md:scale-[4] lg:scale-[3] xl:scale-[2] 2xl:scale-150"
+        url="https://vimeo.com/video/884349212"
+        config={{
+          vimeo: {
+            playerOptions: {
+              autoplay: true,
+              controls: false,
+              muted: true,
+              loop: true,
+              playsinline: true,
+            },
+          },
+        }}
+        playing
+        loop
+        muted
+      />
+    </div>
   );
 };

@@ -1,7 +1,10 @@
 import ModalSinglePortrait from '@/app/(site)/components/Images/ModalSinglePortrait';
 import ModalHeading from '@/app/(site)/components/ModalHeading';
 
-import { getSingleGrantsData } from '../../../../../../sanity/sanity.query';
+import {
+  getAllSlugsByType,
+  getSingleGrantsData,
+} from '../../../../../../sanity/sanity.query';
 
 interface Props {
   params: {
@@ -9,7 +12,18 @@ interface Props {
   };
 }
 
-export const revalidate = 3600;
+export const dynamicParams = true;
+export const revalidate = 86400; // 24 hours
+
+export async function generateStaticParams() {
+  const data = await getAllSlugsByType('grant');
+
+  return data
+    .filter((grant: any) => grant.slug && grant.slug.current)
+    .map((grant: any) => ({
+      slug: grant.slug.current,
+    }));
+}
 
 export default async function Page({ params }: Props) {
   const data = await getSingleGrantsData(params.slug);
@@ -27,9 +41,7 @@ export default async function Page({ params }: Props) {
         content={data.bio}
       />
 
-      {data?.image && (
-        <ModalSinglePortrait image={data.image} />
-      )}
+      {data?.image && <ModalSinglePortrait image={data.image} />}
     </div>
   );
 }

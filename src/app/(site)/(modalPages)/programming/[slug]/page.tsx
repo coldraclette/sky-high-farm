@@ -8,8 +8,11 @@ import {
   urlForImageBlur,
 } from '../../../../../../sanity/lib/image';
 import {
+  getAllSlugsByType,
   getProgrammingProject,
   getSingleProgrammingProjectMetaData,
+  getSingleProjectBySlug,
+  getSingleProjectMetaDataBySlug,
   getSingleSpecialProjectMetaData,
   getSpecialProject,
 } from '../../../../../../sanity/sanity.query';
@@ -20,24 +23,25 @@ interface Props {
   };
 }
 
-export const revalidate = 3600;
+export const dynamicParams = true;
+export const revalidate = 86400; // 24 hours
+
+export async function generateStaticParams() {
+  // Fetch slugs for both programming projects and special projects
+  const programmingProjects = await getAllSlugsByType('programmingProject');
+  const specialProjects = await getAllSlugsByType('specialProject');
+
+  // Combine and deduplicate the slugs
+  const combinedSlugs = [...programmingProjects, ...specialProjects];
+  const uniqueSlugs = Array.from(
+    new Set(combinedSlugs.map((proj) => proj.slug.current))
+  ).map((slug) => ({ slug }));
+
+  return uniqueSlugs;
+}
 
 export async function generateMetadata({ params }: Props) {
-  let data;
-
-  try {
-    data = await getSingleProgrammingProjectMetaData(params.slug);
-  } catch (error) {
-    console.log('Failed to fetch programming project:', error);
-  }
-
-  if (!data) {
-    try {
-      data = await getSingleSpecialProjectMetaData(params.slug);
-    } catch (error) {
-      console.log('Failed to fetch special project:', error);
-    }
-  }
+  const data = await getSingleProjectMetaDataBySlug(params.slug);
 
   return {
     title: {
@@ -68,25 +72,12 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function Page({ params }: Props) {
-  let data;
-
-  try {
-    data = await getProgrammingProject(params.slug);
-  } catch (error) {
-    console.error('Failed to fetch programming project:', error);
-  }
-
-  if (!data) {
-    try {
-      data = await getSpecialProject(params.slug);
-    } catch (error) {
-      console.error('Failed to fetch special project:', error);
-    }
-  }
+  const data = await getSingleProjectBySlug(params.slug);
 
   if (!data) {
     return <NotFound />;
   }
+
   return (
     <div>
       <ModalHeading
@@ -118,7 +109,7 @@ export default async function Page({ params }: Props) {
       <div>
         {data.images &&
           data.images
-            .filter((image: any) => !image._upload)
+            .filter((image: any) => image && image.asset)
             .map((image: any) => {
               if (!image) return null;
               return (

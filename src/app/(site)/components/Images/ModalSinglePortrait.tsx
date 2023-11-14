@@ -9,6 +9,11 @@ interface ModalSinglePortraitProps {
 export default function ModalSinglePortrait({
   image,
 }: ModalSinglePortraitProps) {
+
+  if (!image) {
+    return null;
+  }
+
   return (
     <>
       <div className="relative mx-auto mt-8 flex h-[500px] max-w-[1200px] justify-center md:h-[800px]">

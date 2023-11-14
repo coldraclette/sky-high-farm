@@ -14,7 +14,7 @@ import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 import { composeClassNames } from '../../utils';
 
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =

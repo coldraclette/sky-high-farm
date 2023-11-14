@@ -2,6 +2,18 @@ import { groq } from 'next-sanity';
 
 import { client } from './lib/client';
 
+export async function getCountByType(type: string) {
+  return client.fetch(groq`count(*[_type == "${type}"])`);
+}
+
+export async function getNumberOfProgrammingProjects() {
+  return getCountByType('programmingProject');
+}
+
+export async function getNumberOfSpecialProjects() {
+  return getCountByType('specialProject');
+}
+
 export async function getLandingPageData() {
   return client.fetch(
     groq`*[_type == "landingPage"][0]{backgroundVideo, backgroundImage}`
@@ -24,14 +36,6 @@ export async function getProgrammingPageData() {
     specialProjectsTitle,
     specialProjectsTextContent
   }`);
-}
-
-export async function getNumberOfProgrammingProjects() {
-  return client.fetch(groq`count(*[_type == "programmingProject"])`);
-}
-
-export async function getNumberOfSpecialProjects() {
-  return client.fetch(groq`count(*[_type == "specialProject"])`);
 }
 
 export async function getAboutPageData() {
@@ -245,6 +249,37 @@ export async function getSpecialProject(slug: string) {
   }`);
 }
 
+export async function getSingleProjectBySlug(slug: string) {
+  return client.fetch(
+    groq`*[_type in ["specialProject", "programmingProject"] && slug.current == "${slug}"][0]{
+      title,
+      slug,
+      "projectImage": projectImage.asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+      date,
+      projectInfo,
+      textContent,
+      "images": images[]{
+        asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        },
+        "imageStyle": imageStyle,
+        "alt": alt,
+        "credit": credit
+      }
+    }`
+  );
+}
+
 export async function getSupportPageData() {
   return client.fetch(groq`*[_type == "supportPage"][0]{
     textContent,
@@ -403,6 +438,12 @@ export async function getSingleOrganizationData(slug: string) {
   }`);
 }
 
+export async function getAllSlugsByType(type: string) {
+  return client.fetch(groq`*[_type == "${type}"]{
+    slug { current }
+  }`);
+}
+
 export async function getSingleGrantsData(slug: string) {
   return client.fetch(groq`*[_type == "grant" && slug.current == "${slug}"][0]{
     name,
@@ -554,6 +595,16 @@ export async function getSingleSpecialProjectMetaData(slug: string) {
     seoDescription,
     projectImage,
   }`);
+}
+
+export async function getSingleProjectMetaDataBySlug(slug: string) {
+  return client.fetch(
+    groq`*[_type in ["specialProject", "programmingProject"] && slug.current == "${slug}"][0]{
+      title,
+      seoDescription,
+      projectImage,
+    }`
+  );
 }
 
 export async function getPageSettings() {

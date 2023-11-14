@@ -10,7 +10,7 @@ import Menu from '../../components/Navigation/Menu';
 import PageTitle from '../../components/PageTitle';
 import TextContent from '../../components/TextContent';
 
-export const revalidate = 3600;
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } = await getContactPageMetaData();

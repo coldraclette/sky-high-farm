@@ -5,7 +5,10 @@ import {
   urlForImage,
   urlForImageBlur,
 } from '../../../../../../sanity/lib/image';
-import { getSingleOrganizationData } from '../../../../../../sanity/sanity.query';
+import {
+  getAllSlugsByType,
+  getSingleOrganizationData,
+} from '../../../../../../sanity/sanity.query';
 
 interface Props {
   params: {
@@ -13,7 +16,18 @@ interface Props {
   };
 }
 
-export const revalidate = 3600;
+export const dynamicParams = true;
+export const revalidate = 86400; // 24 hours
+
+export async function generateStaticParams() {
+  const data = await getAllSlugsByType('organizations');
+
+  return data
+    .filter((org: any) => org.slug && org.slug.current)
+    .map((org: any) => ({
+      slug: org.slug.current,
+    }));
+}
 
 export default async function Page({ params }: Props) {
   const data = await getSingleOrganizationData(params.slug);

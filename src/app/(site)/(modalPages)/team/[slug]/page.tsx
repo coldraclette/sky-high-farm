@@ -32,6 +32,11 @@ export async function generateMetadata({ params }: Props) {
     params.slug
   );
 
+  if (!name || !seoDescription) {
+    return null;
+  }
+
+
   return {
     title: {
       default: `Sky High Farm | ${name}`,

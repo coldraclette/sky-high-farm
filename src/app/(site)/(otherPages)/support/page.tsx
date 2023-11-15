@@ -18,6 +18,10 @@ export const revalidate = 86400; // 24 hours
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } = await getSupportPageMetaData();
 
+  if (!seoTitle || !seoDescription) {
+    return null;
+  }
+
   return {
     title: {
       default: seoTitle,

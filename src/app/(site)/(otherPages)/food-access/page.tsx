@@ -20,6 +20,10 @@ export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =
     await getFoodAccessPageMetaData();
 
+  if (!seoTitle || !seoDescription) {
+    return null;
+  }
+
   return {
     title: {
       default: seoTitle,

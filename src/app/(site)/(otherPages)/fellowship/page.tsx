@@ -18,6 +18,10 @@ export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =
     await getFellowshipPageMetaData();
 
+  if (!seoTitle || !seoDescription || !seoImage) {
+    return null;
+  }
+
   return {
     title: {
       default: seoTitle,

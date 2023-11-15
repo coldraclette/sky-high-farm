@@ -20,6 +20,10 @@ export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =
     await getProgrammingPageMetaData();
 
+  if (!seoTitle || !seoDescription || !seoImage) {
+    return null;
+  }
+
   return {
     title: {
       default: seoTitle,

@@ -42,6 +42,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props) {
   const data = await getSingleProjectMetaDataBySlug(params.slug);
+  
+  if (!data) {
+    return null;
+  }
 
   return {
     title: {

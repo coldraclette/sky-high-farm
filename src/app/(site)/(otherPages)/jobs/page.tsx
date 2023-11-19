@@ -93,7 +93,7 @@ export default async function Page() {
           <div className="fixed left-0 top-0 h-screen w-full">
             <Image
               alt={data.backgroundImage.alt}
-              src={urlForImage(data.backgroundImage)}
+              src={urlForImage(data.backgroundImage, 2400)}
               fill
               className="object-cover"
               placeholder="blur"

@@ -18,7 +18,7 @@ export default function ModalSinglePortrait({
     <>
       <div className="relative mx-auto mt-8 flex h-[500px] max-w-[1200px] justify-center md:h-[800px]">
         <Image
-          src={image ? urlForImage(image) : '/skyhighfarm-logo.png'}
+          src={image ? urlForImage(image, 800) : '/skyhighfarm-logo.png'}
           alt={image?.alt ? image.alt : ''}
           placeholder="blur"
           fill

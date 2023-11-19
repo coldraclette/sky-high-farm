@@ -37,7 +37,7 @@ export default function ProgrammingProjectItem({
         <Image
           src={
             project.projectImage
-              ? urlForImage(project.projectImage)
+              ? urlForImage(project.projectImage, 600)
               : '/skyhighfarm-logo.png'
           }
           alt={project.projectImage?.alt ? project.projectImage?.alt : ''}

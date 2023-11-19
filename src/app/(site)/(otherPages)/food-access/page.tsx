@@ -83,7 +83,7 @@ export default async function Page() {
                   <Image
                     src={
                       org?.image
-                        ? urlForImage(org?.image)
+                        ? urlForImage(org?.image, 600)
                         : '/skyhighfarm-logo.png'
                     }
                     fill

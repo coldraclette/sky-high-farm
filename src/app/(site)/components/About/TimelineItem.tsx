@@ -24,7 +24,7 @@ export default function TimelineItem({ item }: TimelineItemProps) {
       </div>
       <div className="relative mt-2 aspect-square w-full md:mt-0">
         <Image
-          src={item?.image ? urlForImage(item.image) : '/skyhighfarm-logo.png'}
+          src={item?.image ? urlForImage(item.image, 800) : '/skyhighfarm-logo.png'}
           alt={item?.image?.alt ? item.image.alt : ''}
           fill
           className="object-cover"

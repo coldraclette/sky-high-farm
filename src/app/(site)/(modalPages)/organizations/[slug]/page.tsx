@@ -49,7 +49,7 @@ export default async function Page({ params }: Props) {
         <div className="relative m-auto mt-8 flex h-60 w-60 justify-center">
           <Image
             src={
-              data?.image ? urlForImage(data?.image) : '/skyhighfarm-logo.png'
+              data?.image ? urlForImage(data?.image, 800) : '/skyhighfarm-logo.png'
             }
             alt={data?.alt ? data?.alt : ''}
             placeholder="blur"

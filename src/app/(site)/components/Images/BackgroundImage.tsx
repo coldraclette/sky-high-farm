@@ -15,7 +15,7 @@ export default function BackgroundImage({
       <div className="fixed left-0 top-0 h-screen w-full">
         <Image
           alt={backgroundImage.alt}
-          src={urlForImage(backgroundImage)}
+          src={urlForImage(backgroundImage, 2000)}
           fill
           sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
           className="bg-center object-cover"

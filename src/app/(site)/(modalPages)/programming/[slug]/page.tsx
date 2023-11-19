@@ -124,7 +124,7 @@ export default async function Page({ params }: Props) {
                   >
                     {image.imageStyle === 'portrait' && (
                       <Image
-                        src={urlForImage(image)}
+                        src={urlForImage(image, 2000)}
                         alt={image.alt ? image.alt : ''}
                         fill
                         sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
@@ -137,7 +137,7 @@ export default async function Page({ params }: Props) {
                       !image.imageStyle) && (
                       <>
                         <Image
-                          src={urlForImage(image)}
+                          src={urlForImage(image, 1920)}
                           alt={image.alt ? image.alt : ''}
                           fill
                           sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"

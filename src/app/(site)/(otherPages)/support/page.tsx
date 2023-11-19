@@ -100,7 +100,7 @@ export default async function Page() {
               <Link href={data.link} target="_blank" rel="noreferrer noopener">
                 <div className="relative h-[50px] w-[140px] md:h-[100px] md:w-[250px]">
                   <Image
-                    src={urlForImage(data.donateButtonImage)}
+                    src={urlForImage(data.donateButtonImage, 400)}
                     alt={data.donateButtonImage.alt}
                     width={250}
                     height={100}

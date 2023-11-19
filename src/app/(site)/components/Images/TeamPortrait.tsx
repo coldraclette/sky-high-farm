@@ -30,7 +30,7 @@ export default function TeamPortrait({
     <>
       <div className="relative mt-2 aspect-square w-full md:mt-0">
         <Image
-          src={image ? urlForImage(image) : '/skyhighfarm-logo.png'}
+          src={image ? urlForImage(image, 600) : '/skyhighfarm-logo.png'}
           fill
           alt={alt ? alt : ''}
           placeholder="blur"

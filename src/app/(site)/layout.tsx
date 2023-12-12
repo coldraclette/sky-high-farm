@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 
 import { urlForImage } from '../../../sanity/lib/image';
 import { getLandingPageMetaData } from '../../../sanity/sanity.query';
@@ -65,7 +64,6 @@ export default function RootLayout({
     <html lang="en" className={monumentGrotesk.variable}>
       <GoogleTag trackingId="G-2HJLYLJHD4" />
       <body className="h-full w-full">{children}</body>
-      <Analytics />
     </html>
   );
 }

@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const dynamicParams = true;
-export const revalidate = 86400; // 24 hours
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const data = await getAllSlugsByType('teamMember');

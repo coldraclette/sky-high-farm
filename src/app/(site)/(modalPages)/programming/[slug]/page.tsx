@@ -24,7 +24,7 @@ interface Props {
 }
 
 export const dynamicParams = true;
-export const revalidate = 86400; // 24 hours
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   // Fetch slugs for both programming projects and special projects

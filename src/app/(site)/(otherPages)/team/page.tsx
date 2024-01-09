@@ -9,7 +9,7 @@ import Menu from '../../components/Navigation/Menu';
 import PageTitle from '../../components/PageTitle';
 import StaffSection from '../../components/Team/StaffSection';
 
-export const revalidate = 86400; // 24 hours
+export const revalidate = 60;
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } = await getTeamPageMetaData();

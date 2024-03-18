@@ -1,5 +1,6 @@
 import { groq } from 'next-sanity';
 
+import { revalidate } from './../src/app/(site)/(modalPages)/fellowship/[slug]/page';
 import { client } from './lib/client';
 
 export async function getCountByType(type: string) {
@@ -280,6 +281,35 @@ export async function getSingleProjectBySlug(slug: string) {
   );
 }
 
+export async function getSingleEventBySlug(slug: string) {
+  return client.fetch(groq`*[_type == "event" && slug.current == "${slug}"][0]{
+     title,
+      slug,
+      "projectImage": projectImage.asset->{
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      },
+      date,
+      projectInfo,
+      textContent,
+      "images": images[]{
+        asset->{
+          _id,
+          url,
+          metadata {
+            lqip
+          }
+        },
+        "imageStyle": imageStyle,
+        "alt": alt,
+        "credit": credit
+      }
+  }`);
+}
+
 export async function getSupportPageData() {
   return client.fetch(groq`*[_type == "supportPage"][0]{
     textContent,
@@ -420,6 +450,34 @@ export async function getFellowshipPageData() {
       }
     }
   }`);
+}
+
+export async function getEventsPageData() {
+  return client.fetch(groq`*[_type == "eventsPage"][0]{
+    "headerImage": headerImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
+    pageTitle,
+    titlePosition,
+    textContent,
+    projects[]->{
+      title,
+    "projectImage": projectImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    },
+    subtitleGreen,
+    date,
+    flexibleDate,
+    slug { current }
+    }  }`);
 }
 
 export async function getSingleOrganizationData(slug: string) {
@@ -608,7 +666,11 @@ export async function getSingleProjectMetaDataBySlug(slug: string) {
 }
 
 export async function getPageSettings() {
-  return client.fetch(groq`*[_type == "settings"][0]{
+  return client.fetch(
+    groq`*[_type == "settings"][0]{
     menuColor,
-  }`);
+    showEventsPage
+  }`,
+    { revalidate: 60 }
+  );
 }

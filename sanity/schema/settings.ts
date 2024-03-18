@@ -16,5 +16,11 @@ export const settings = {
         ],
       },
     },
+    {
+      name: 'showEventsPage',
+      title: 'Show Events Page',
+      description: 'Show the events page in the menu',
+      type: 'boolean',
+    },
   ],
 };

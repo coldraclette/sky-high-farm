@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 import { getPageSettings } from '../../../../../sanity/sanity.query';
 import { composeClassNames } from '../../utils';
@@ -14,6 +15,7 @@ interface MenuProps {
 export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const [showEventsPage, setShowEventsPage] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,6 +34,17 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const pageSettings = await getPageSettings();
+      console.log('pageSettings', pageSettings.showEventsPage);
+      setShowEventsPage(pageSettings.showEventsPage);
+    };
+
+    fetchData();
+  }, []);
+
+  console.log('showEventsPage', showEventsPage);
   const handleMenuItemClicked = () => setIsOpen(false);
   return (
     <>
@@ -75,6 +88,7 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
               title="Programming"
               onItemClick={handleMenuItemClicked}
             />
+
             <MenuItem
               path="/grants"
               title="Grants"
@@ -105,6 +119,17 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
               title="Contact"
               onItemClick={handleMenuItemClicked}
             />
+            {showEventsPage === true && (
+              <div className="flex gap-2">
+                <Image alt="" src="/leftbigstar.png" width={30} height={10} />
+                <MenuItem
+                  path="/events"
+                  title="Events"
+                  onItemClick={handleMenuItemClicked}
+                />
+                <Image alt="" src="/rightstars.png" width={30} height={10} />
+              </div>
+            )}
           </ul>
         )}
       </nav>

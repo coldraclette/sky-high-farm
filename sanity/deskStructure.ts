@@ -108,6 +108,15 @@ export const structure = (S: any) =>
                     .documentId('volunteerPage')
                     .title('Volunteer Page')
                 ),
+
+              S.listItem()
+                .title('Events Page')
+                .child(
+                  S.document()
+                    .schemaType('eventsPage')
+                    .documentId('eventsPage')
+                    .title('Events Page')
+                ),
             ])
         ),
       S.listItem()
@@ -163,6 +172,13 @@ export const structure = (S: any) =>
                     .title('Grants')
                     .filter('_type == "grant"')
                 ),
+              S.listItem()
+                .title('Events')
+                .child(
+                  S.documentTypeList('event')
+                    .title('Events')
+                    .filter('_type == "event"')
+                ),
             ])
         ),
 
@@ -198,7 +214,8 @@ export const structure = (S: any) =>
             'grant',
             'settings',
             'media.tag',
+            'eventsPage',
+            'event',
           ].includes(listItem.getId())
       ),
     ]);
-

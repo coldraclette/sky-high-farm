@@ -15,7 +15,7 @@ export default function ModalHeading({
   content,
 }: ModalHeadingProps) {
   const renderSubtitle = () => {
-    if (path === '/food-access' || path === '/programming') {
+    if (path === '/food-access' || path === '/programming' || path === '/events') {
       return (
         <TextContent
           text={info}

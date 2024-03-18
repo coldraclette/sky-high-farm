@@ -14,10 +14,12 @@ interface ProgrammingProjectItemProps {
     title: string;
     subtitleGreen: string;
   };
+  event?: boolean;
 }
 
 export default function ProgrammingProjectItem({
   project,
+  event,
 }: ProgrammingProjectItemProps) {
   function formatDateShort(input: string): string {
     const date = new Date(input);
@@ -30,7 +32,7 @@ export default function ProgrammingProjectItem({
 
   return (
     <Link
-      href={`/programming/${project.slug.current}`}
+      href={`/${event ? 'events' : 'programming'}/${project.slug.current}`}
       className="overflow-hidden"
     >
       <div className="relative aspect-square w-full overflow-hidden">

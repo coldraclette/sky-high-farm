@@ -37,14 +37,12 @@ export default function Menu({ color = '', isLandingPage = false }: MenuProps) {
   useEffect(() => {
     const fetchData = async () => {
       const pageSettings = await getPageSettings();
-      console.log('pageSettings', pageSettings.showEventsPage);
       setShowEventsPage(pageSettings.showEventsPage);
     };
 
     fetchData();
   }, []);
 
-  console.log('showEventsPage', showEventsPage);
   const handleMenuItemClicked = () => setIsOpen(false);
   return (
     <>

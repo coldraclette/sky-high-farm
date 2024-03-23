@@ -30,6 +30,47 @@ export default function ProgrammingProjectItem({
     });
   }
 
+  if (!project.slug?.current) {
+    return (
+      <div className="overflow-hidden">
+        <div className="relative aspect-square w-full overflow-hidden">
+          <Image
+            src={
+              project.projectImage
+                ? urlForImage(project.projectImage, 600)
+                : '/skyhighfarm-logo.png'
+            }
+            alt={project.projectImage?.alt ? project.projectImage?.alt : ''}
+            placeholder="blur"
+            fill
+            sizes="(min-width: 1280px) calc(25vw - 30px), (min-width: 1040px) calc(33.18vw - 30px), (min-width: 780px) calc(50vw - 36px), calc(100vw - 40px)"
+            className="h-full w-full object-cover transition-opacity duration-300 hover:opacity-40"
+            blurDataURL={
+              project.projectImage
+                ? project.projectImage?.metadata?.lqip
+                : '/skyhighfarm-logo.png'
+            }
+          />
+        </div>
+        <div className="mt-2">
+          {project.flexibleDate ? (
+            <p className="text-sm md:text-xl">{project.flexibleDate}</p>
+          ) : (
+            <p className="text-sm md:text-xl">
+              {formatDateShort(project.date)}
+            </p>
+          )}
+        </div>
+        <h3 className="md:text-xl lg:text-3xl">{project.title}</h3>
+        {project.subtitleGreen && (
+          <h4 className="text-green md:text-xl lg:text-3xl">
+            {project.subtitleGreen}
+          </h4>
+        )}
+      </div>
+    );
+  }
+
   return (
     <Link
       href={`/${event ? 'events' : 'programming'}/${project.slug.current}`}

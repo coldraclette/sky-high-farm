@@ -665,6 +665,15 @@ export async function getSingleProjectMetaDataBySlug(slug: string) {
   );
 }
 
+export async function getEventsPageMetaData() {
+  return client.fetch(groq`*[_type == "eventsPage"][0]{
+    title,
+    seoTitle,
+    seoDescription,
+    headerImage,
+  }`);
+}
+
 export async function getPageSettings() {
   return client.fetch(
     groq`*[_type == "settings"][0]{

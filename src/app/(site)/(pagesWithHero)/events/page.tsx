@@ -1,7 +1,6 @@
 import { urlForImage } from '../../../../../sanity/lib/image';
 import {
   getEventsPageData,
-  getProgrammingPageMetaData,
 } from '../../../../../sanity/sanity.query';
 import HeaderImage from '../../components/HeaderImage';
 import HeaderImageTitleAndAlt from '../../components/HeaderImageTitleAndAlt';
@@ -13,7 +12,7 @@ export const revalidate = 60;
 
 export async function generateMetadata() {
   const { seoTitle, seoDescription, seoImage } =
-    await getProgrammingPageMetaData();
+    await getEventsPageData();
 
   if (!seoTitle || !seoDescription || !seoImage) {
     return null;
@@ -26,7 +25,7 @@ export async function generateMetadata() {
     description: seoDescription,
     openGraph: {
       type: 'website',
-      url: 'skyhighfarm.org/programming',
+      url: 'skyhighfarm.org/events',
       title: seoTitle,
       description: seoDescription,
       siteName: 'skyhighfarm.org',
